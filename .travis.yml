@@ -1,1 +1,5 @@
 language: crystal
+script:
+  - crystal spec
+  - crystal tool format --check
+  - find examples -name "*.cr" | xargs -L 1 crystal build --no-codegen

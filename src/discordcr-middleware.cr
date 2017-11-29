@@ -32,4 +32,3 @@ module Discord
     end
   end
 end
-

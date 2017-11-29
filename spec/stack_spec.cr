@@ -25,6 +25,15 @@ describe Discord::Stack do
       end
     end
 
+    it "calls the block at the end of the middleware chain" do
+      called = false
+      block = ->(ctx : Discord::Context) { called = true; nil }
+      stack = Discord::Stack.new(Client, FlagMiddleware.new, &block)
+      stack.run(message)
+
+      called.should be_true
+    end
+
     context "with a middleware that doesn't send done.call" do
       it "doesn't continue" do
         middlewares = {FlagMiddleware.new, StopMiddleware.new, FlagMiddleware.new}

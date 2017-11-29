@@ -37,6 +37,8 @@ module Discord
     def next(index, context)
       if mw = @middlewares[index]?
         mw.call context, ->{ self.next(index + 1, context) }
+      else
+        @block.try &.call(context)
       end
     end
   end

@@ -3,14 +3,14 @@ require "./spec_helper"
 describe Discord::Client do
   describe "#stacks" do
     it "holds a collection of Stacks" do
-      client.stacks.should be_a Hash(Symbol, Discord::Stack)
+      Client.stacks.should be_a Hash(Symbol, Discord::Stack)
     end
   end
 
   describe "#stack" do
     context "with ID and middlewares" do
       it "stores a new stack" do
-        c = client
+        c = Client
         c.stack(:foo, FlagMiddleware.new)
         c.stacks[:foo].should be_a Discord::Stack
       end
@@ -18,7 +18,7 @@ describe Discord::Client do
 
     context "with only ID" do
       it "returns the stack with that ID" do
-        c = client
+        c = Client
         stack = c.stack(:foo, FlagMiddleware.new)
         c.stack(:foo).should eq stack
       end
@@ -28,7 +28,7 @@ describe Discord::Client do
   describe "#run_stack" do
     it "passes a message through each stack" do
       middlewares = {FlagMiddleware.new, FlagMiddleware.new}
-      c = client
+      c = Client
       c.stack(:foo, *middlewares)
       c.stack(:bar, *middlewares)
 

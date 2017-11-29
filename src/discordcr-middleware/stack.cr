@@ -15,6 +15,8 @@ module Discord
   class Stack
     getter client : Client
 
+    getter block
+
     def initialize(@client, *middlewares)
       @middlewares = [] of Middleware
       middlewares.each { |m| @middlewares << m }
@@ -25,6 +27,11 @@ module Discord
       @middlewares = [] of Middleware
       middlewares.each { |m| @middlewares << m }
       @block = block
+    end
+
+    # Whether this stack has a trailing block
+    def block?
+      !@block.nil?
     end
 
     # Runs a message through this middleware stack

@@ -10,6 +10,11 @@ module Discord
       @stacks[id] = Stack.new(self, *middleware)
     end
 
+    # Registers a new `Stack` with a unique ID and a path of middleware to run
+    def stack(id : Symbol, *middleware, &block : Context ->)
+      @stacks[id] = Stack.new(self, *middleware, &block)
+    end
+
     # Returns the stack stored under `id`
     def stack(id : Symbol)
       @stacks[id]

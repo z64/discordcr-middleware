@@ -14,6 +14,15 @@ describe Discord::Client do
         c.stack(:foo, FlagMiddleware.new)
         c.stacks[:foo].should be_a Discord::Stack
       end
+
+      it "forwards a block to the stack" do
+        c = Client
+        c.stack(:foo, FlagMiddleware.new) do |context|
+          nil
+        end
+
+        c.stack(:foo).block?.should be_true
+      end
     end
 
     context "with only ID" do

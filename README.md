@@ -92,7 +92,7 @@ Stacks represent a chain of middleware that are executed in succession.
 Stacks can be registered on the `Client` with `Client#stack` and are uniquely identified with a symbol.
 
 ```crystal
-client.stack(:db_info, Prefix.new('!dbinfo'), UserQuery.new) do |context|
+client.stack(:db_info, Prefix.new("!dbinfo"), UserQuery.new) do |context|
   user = context.db_user
   channel_id = context.message.channel_id
 

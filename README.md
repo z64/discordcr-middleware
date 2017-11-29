@@ -60,8 +60,14 @@ class UserQuery < Discord::Middlewear
     user = Database::UserModel.find(discord_id: author_id)
     context.db_user = user
 
-    # Only call the next middleware if the user was in our DB
-    done.call if user
+    # Only call the next middleware if the user was in our DB,
+    # otherwise send an error message
+    if user
+      done.call
+    else
+      channel_id = context.message.channel_id
+      context.client.create_message(channel_id, "User not found")
+    end
   end
 end
 ```

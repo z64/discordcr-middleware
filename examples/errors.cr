@@ -31,4 +31,3 @@ client.stack(:error, Prefix.new("!test"), ErrorCatcher.new) do |context|
 end
 
 client.run
-

@@ -111,3 +111,5 @@ client.stack(:foo, MiddlewareA.new, MiddlewareB.new)
 ## Contributors
 
 - [z64](https://github.com/z64)  - creator, maintainer
+
+*Inspired by the [raze](https://razecr.com/) web framework and its [middleware system](https://razecr.com/docs/middlewares).*

@@ -6,6 +6,12 @@ describe Discord::Stack do
       stack = Discord::Stack.new(Client, FlagMiddleware.new)
       stack.@middlewares.should be_a Array(Discord::Middleware)
     end
+
+    it "accepts a block" do
+      block = ->(context : Discord::Context) { nil }
+      stack = Discord::Stack.new(Client, FlagMiddleware.new, &block)
+      stack.@block.should eq block
+    end
   end
 
   describe "#run" do

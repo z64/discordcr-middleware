@@ -18,6 +18,13 @@ module Discord
     def initialize(@client, *middlewares)
       @middlewares = [] of Middleware
       middlewares.each { |m| @middlewares << m }
+      @block = nil
+    end
+
+    def initialize(@client, *middlewares, &block : Context ->)
+      @middlewares = [] of Middleware
+      middlewares.each { |m| @middlewares << m }
+      @block = block
     end
 
     # Runs a message through this middleware stack

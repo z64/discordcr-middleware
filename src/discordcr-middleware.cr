@@ -27,6 +27,11 @@ module Discord
       end
     end
 
+    # Passes a message to a specific stack
+    def run_stack(id : Symbol, message : Message)
+      stack(id).run(message)
+    end
+
     def initialize(token : String, client_id : UInt64? = nil,
                    shard : Gateway::ShardKey? = nil,
                    large_threshold : Int32 = 100,

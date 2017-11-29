@@ -35,18 +35,31 @@ describe Discord::Client do
   end
 
   describe "#run_stack" do
-    it "passes a message through each stack" do
-      middlewares = {FlagMiddleware.new, FlagMiddleware.new}
-      c = Client
-      c.stack(:foo, *middlewares)
-      c.stack(:bar, *middlewares)
+    context "with only a message" do
+      it "passes a message through each stack" do
+        middlewares = {FlagMiddleware.new, FlagMiddleware.new}
+        c = Client
+        c.stack(:foo, *middlewares)
+        c.stack(:bar, *middlewares)
 
-      m = message
-      c.run_stack(m)
+        m = message
+        c.run_stack(m)
 
-      middlewares.each do |mw|
-        mw.message.should eq m
-        mw.counter.should eq 2
+        middlewares.each do |mw|
+          mw.message.should eq m
+          mw.counter.should eq 2
+        end
+      end
+    end
+
+    context "with an ID and message" do
+      it "runs a specific stack" do
+        c = Client
+        mw = FlagMiddleware.new
+        c.stack(:foo, mw)
+        c.run_stack(:foo, message)
+
+        mw.called.should be_true
       end
     end
   end

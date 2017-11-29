@@ -1,0 +1,14 @@
+name: discordcr-middleware
+version: 0.1.0
+
+authors:
+  -  Zac Nowicki <zachnowicki@gmail.com>
+
+dependencies:
+  discordcr:
+    github: meew0/discordcr
+    branch: master
+
+crystal: 0.24.0
+
+license: MIT

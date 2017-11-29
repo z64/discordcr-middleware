@@ -54,7 +54,7 @@ And use it in some middleware:
 ```crystal
 Discord.add_ctx_property!(db_user, Database::UserModel)
 
-class UserQuery < Discord::Middlewear
+class UserQuery < Discord::Middleware
   def call(context, done)
     author_id = context.message.author.id
     user = Database::UserModel.find(discord_id: author_id)

@@ -10,6 +10,11 @@ module Discord
       @stacks[id] = Stack.new(self, *middleware)
     end
 
+    # Returns the stack stored under `id`
+    def stack(id : Symbol)
+      @stacks[id]
+    end
+
     # Passes a message through the registered stacks
     def run_stack(message : Message)
       @stacks.each do |id, stack|

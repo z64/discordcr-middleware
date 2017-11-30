@@ -1,4 +1,5 @@
 require "../src/discordcr-middleware"
+require "../src/discordcr-middleware/middleware/prefix"
 
 # Because `done.call` nests for each middleware in the chain, you can rescue
 # from any exception that happens later in the stack and handle it. Here we
@@ -15,18 +16,9 @@ class ErrorCatcher < Discord::Middleware
   end
 end
 
-class Prefix < Discord::Middleware
-  def initialize(@prefix : String)
-  end
-
-  def call(context, done)
-    done.call if context.message.content.starts_with?(@prefix)
-  end
-end
-
 client = Discord::Client.new("Bot TOKEN")
 
-client.stack(:error, Prefix.new("!test"), ErrorCatcher.new) do |context|
+client.stack(:error, DiscordMiddleware::Prefix.new("!test"), ErrorCatcher.new) do |context|
   raise "Woops!"
 end
 

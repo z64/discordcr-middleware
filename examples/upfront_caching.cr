@@ -1,4 +1,5 @@
 require "../src/discordcr-middleware"
+require "../src/discordcr-middleware/middleware/prefix"
 
 Discord.add_ctx_property! channel, Discord::Channel
 Discord.add_ctx_property guild, Discord::Guild?
@@ -27,22 +28,13 @@ class CachedEvent < Discord::Middleware
   end
 end
 
-class Prefix < Discord::Middleware
-  def initialize(@prefix : String)
-  end
-
-  def call(context, done)
-    done.call if context.message.content.starts_with?(@prefix)
-  end
-end
-
 client = Discord::Client.new("Bot TOKEN")
 
 # Hook up the Cache
 cache = Discord::Cache.new(client)
 client.cache = cache
 
-client.stack(:member, Prefix.new("!memberinfo"), CachedEvent.new) do |context|
+client.stack(:member, DiscordMiddleware::Prefix.new("!memberinfo"), CachedEvent.new) do |context|
   distinct = "#{context.message.author.username}##{context.message.author.discriminator}"
   if member = context.member
     nick = member.nick

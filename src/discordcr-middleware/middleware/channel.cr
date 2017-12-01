@@ -2,6 +2,8 @@
 # several different attributes. If the client has a cache enabled,
 # it will be used to resolve the channel the message came from.
 class DiscordMiddleware::Channel < Discord::Middleware
+  include AttributeMiddleware
+
   def initialize(@id : UInt64? = nil, @name : String? = nil,
                  @topic : String? = nil, @nsfw : Bool? = nil,
                  @is_private : Bool? = nil, @guild_id : UInt64? = nil,
@@ -22,13 +24,7 @@ class DiscordMiddleware::Channel < Discord::Middleware
   def call(context, done)
     ch = channel(context)
 
-    {% for var in @type.instance_vars %}
-      if attr = ch.{{var.id}}
-        if value = @{{var.id}}
-          return unless value == attr
-        end
-      end
-    {% end %}
+    check_attributes(ch)
 
     done.call
   end

@@ -8,6 +8,8 @@ dependencies:
   discordcr:
     github: meew0/discordcr
     branch: master
+  rate_limiter:
+    github: z64/rate_limiter
 
 crystal: 0.24.0
 

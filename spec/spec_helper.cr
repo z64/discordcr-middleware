@@ -11,8 +11,8 @@ def channel
   Discord::Channel.from_json(channel_json)
 end
 
-def message(content = "")
-  message_json = %({"attachments": [], "tts": false, "embeds": [], "timestamp": "2017-11-29T14:41:51.808000+00:00", "mention_everyone": false, "id": "385440229341003776", "pinned": false, "edited_timestamp": null, "author": {"username": "z64", "discriminator": "2639", "id": "120571255635181568", "avatar": "862875f54a2ef6db022512ee0d3b8d20"}, "mention_roles": [], "content": "#{content}", "channel_id": "326472371441762304", "mentions": [], "type": 0})
+def message(content = "", author_id = 0)
+  message_json = %({"attachments": [], "tts": false, "embeds": [], "timestamp": "2017-11-29T14:41:51.808000+00:00", "mention_everyone": false, "id": "385440229341003776", "pinned": false, "edited_timestamp": null, "author": {"username": "z64", "discriminator": "2639", "id": "#{author_id}", "avatar": "862875f54a2ef6db022512ee0d3b8d20"}, "mention_roles": [], "content": "#{content}", "channel_id": "326472371441762304", "mentions": [], "type": 0})
   Discord::Message.from_json(message_json)
 end
 

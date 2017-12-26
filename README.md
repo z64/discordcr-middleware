@@ -45,7 +45,7 @@ You can also extend `Context` and add more custom properties to be set and share
 Discord.add_ctx_property(db_user, Database::UserModel)
 
 # Add `Context#db_user`, with type `Database::UserModel`
-# This performs a `not_nil!` assertion whenever you try to call it to guarentee the type to the compliler.
+# This performs a `not_nil!` assertion whenever you try to call it to guarantee the type to the compiler.
 # You are responsible for ensuring it will never be `nil`.
 Discord.add_ctx_property!(db_user, Database::UserModel)
 ```

@@ -37,6 +37,8 @@ module DiscordMiddleware
   # end
   # ```
   class RateLimiter < Discord::Middleware
+    include DiscordMiddleware::CachedRoutes
+
     def initialize(@limiter : ::RateLimiter(UInt64), @bucket : Symbol,
                    @key : RateLimiterKey = RateLimiterKey::UserID,
                    @message : String? = nil)
@@ -76,10 +78,12 @@ module DiscordMiddleware
           return
         end
       when RateLimiterKey::GuildID
-        if guild = resolve_guild(context)
-          if time = @limiter.rate_limited?(@bucket, context.message.channel_id)
-            rate_limit_reply(context, time)
-            return
+        if guild_id = get_channel(context.client, context.message.channel_id).guild_id
+          if guild = get_guild(context.client, guild_id)
+            if time = @limiter.rate_limited?(@bucket, context.message.channel_id)
+              rate_limit_reply(context, time)
+              return
+            end
           end
         end
       end

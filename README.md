@@ -108,6 +108,18 @@ client.stack(:foo, MiddlewareA.new, MiddlewareB.new)
 
 ### [Additional Examples](https://github.com/z64/discordcr-middleware/tree/master/examples)
 
+## Stock Middleware
+
+A collection of basic, common use-case middleware are provided in [`discordcr-middleware/middleware`](src/discordcr-middleware/middleware).
+
+Require them explicitly to make use of them:
+
+```crystal
+require "discordcr-middleware/middleware/prefix"
+
+DiscordMiddleware::Prefix.new("!help")
+```
+
 ## Contributors
 
 - [z64](https://github.com/z64)  - creator, maintainer

@@ -6,8 +6,7 @@ class DiscordMiddleware::Channel < Discord::Middleware
 
   def initialize(@id : UInt64? = nil, @name : String? = nil,
                  @topic : String? = nil, @nsfw : Bool? = nil,
-                 @is_private : Bool? = nil, @guild_id : UInt64? = nil,
-                 @type : UInt8? = nil)
+                 @guild_id : UInt64? = nil, @type : UInt8? = nil)
   end
 
   # The channel from the message event

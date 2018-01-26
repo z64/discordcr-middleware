@@ -10,7 +10,6 @@ describe DiscordMiddleware::Channel do
         name: "devs",
         topic: "test",
         nsfw: true,
-        is_private: false,
         guild_id: 225375815087554563_u64
       )
     end

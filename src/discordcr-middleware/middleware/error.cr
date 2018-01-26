@@ -8,7 +8,7 @@
 # The text "%exception%" will be replaced with the exception's message if
 # provided. Alternatively, it can be initialized with a block for any other
 # custom behavior.
-class DiscordMiddleware::Error
+class DiscordMiddleware::Error < Discord::Middleware
   def initialize(message : String)
     @message = message
     @block = nil

@@ -36,7 +36,7 @@ describe DiscordMiddleware::Channel do
     context "with a matching channel" do
       it "calls the next middleware" do
         mw = DiscordMiddleware::Channel.new(name: "devs")
-        context = Discord::Context.new(Client, message)
+        context = Discord::Context(Discord::Message).new(Client, message)
 
         mw.call(context, ->{ true }).should be_true
       end
@@ -45,7 +45,7 @@ describe DiscordMiddleware::Channel do
     context "with a channel that doesn't match" do
       it "doesn't call the next middleware" do
         mw = DiscordMiddleware::Channel.new(name: "memes")
-        context = Discord::Context.new(Client, message)
+        context = Discord::Context(Discord::Message).new(Client, message)
 
         mw.call(context, ->{ true }).should be_falsey
       end

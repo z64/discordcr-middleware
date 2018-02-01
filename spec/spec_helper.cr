@@ -39,10 +39,10 @@ class FlagMiddleware < Discord::Middleware
 
   getter message : Discord::Message?
 
-  def call(context, done)
+  def call(context : Discord::Context(Discord::Message), done)
     @called = true
     @counter += 1
-    @message = context.message
+    @message = context.payload
     done.call
   end
 end
@@ -51,7 +51,7 @@ end
 class StopMiddleware < Discord::Middleware
   getter called = false
 
-  def call(context, done)
+  def call(context : Discord::Context(Discord::Message), done)
     @called = true
   end
 end

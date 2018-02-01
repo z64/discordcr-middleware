@@ -25,13 +25,13 @@ module DiscordMiddleware
   class CachedEvent < Discord::Middleware
     include DiscordMiddleware::CachedRoutes
 
-    def call(ctx, done)
-      ctx.channel = channel = get_channel(ctx.client, ctx.message.channel_id)
+    def call(context : Discord::Context(Discord::Message), done)
+      context.channel = channel = get_channel(context.client, context.payload.channel_id)
 
       if guild_id = channel.guild_id
-        ctx.guild = guild = get_guild(ctx.client, guild_id)
-        ctx.member = member = get_member(ctx.client, guild_id, ctx.message.author.id)
-        ctx.member_roles = guild.roles.select { |r| member.roles.includes?(r.id) }
+        context.guild = guild = get_guild(context.client, guild_id)
+        context.member = member = get_member(context.client, guild_id, context.payload.author.id)
+        context.member_roles = guild.roles.select { |r| member.roles.includes?(r.id) }
       end
 
       done.call

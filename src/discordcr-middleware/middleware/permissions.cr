@@ -92,9 +92,9 @@ class DiscordMiddleware::Permissions < Discord::Middleware
     base_permissions
   end
 
-  def call(context, done)
-    channel = get_channel(context.client, context.message.channel_id)
-    user_id = context.message.author.id
+  def call(context : Discord::Context(Discord::Message), done)
+    channel = get_channel(context.client, context.payload.channel_id)
+    user_id = context.payload.author.id
 
     if guild_id = channel.guild_id
       guild = get_guild(context.client, guild_id)

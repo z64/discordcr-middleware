@@ -3,47 +3,96 @@ require "./discordcr-middleware/*"
 
 module Discord
   class Client
-    getter stacks = {} of Symbol => Stack
+    macro stack_event(event_name, klass)
+      @{{event_name}}_stacks = [] of Stack
 
-    # Registers a new `Stack` with a unique ID and a path of middleware to run
-    def stack(id : Symbol, *middleware)
-      @stacks[id] = Stack.new(self, *middleware)
-    end
+      # Creates a `Client#on_{{event_name}}` handler with a middleware chain and
+      # trailing block. Handles a `{{klass}}` payload.
+      def on_{{event_name}}(*middleware, &block : Context({{klass}}) ->)
+        @{{event_name}}_stacks << Stack.new(*middleware)
+        on_{{event_name}} do |payload|
+          @{{event_name}}_stacks.each do |stack|
+            context = Discord::Context({{klass}}).new(self, payload)
+            stack.run(context, 0, &block)
+          end
+        end
+      end
 
-    # Registers a new `Stack` with a unique ID and a path of middleware to run
-    def stack(id : Symbol, *middleware, &block : Context ->)
-      @stacks[id] = Stack.new(self, *middleware, &block)
-    end
-
-    # Returns the stack stored under `id`
-    def stack(id : Symbol)
-      @stacks[id]
-    end
-
-    # Passes a message through the registered stacks
-    def run_stack(message : Message)
-      @stacks.each do |id, stack|
-        stack.run(message)
+      # Creates a `Client#on_{{event_name}}` handler with a middleware chain.
+      # Handles a `{{klass}}` payload.
+      def on_{{event_name}}(*middleware)
+        @{{event_name}}_stacks << Stack.new(*middleware)
+        on_{{event_name}} do |payload|
+          @{{event_name}}_stacks.each do |stack|
+            context = Discord::Context({{klass}}).new(self, payload)
+            stack.run(context)
+          end
+        end
       end
     end
 
-    # Passes a message to a specific stack
-    def run_stack(id : Symbol, message : Message)
-      stack(id).run(message)
-    end
+    stack_event dispatch, {String, IO::Memory}
 
-    def initialize(token : String, client_id : UInt64? = nil,
-                   shard : Gateway::ShardKey? = nil,
-                   large_threshold : Int32 = 100,
-                   compress : Bool = false,
-                   properties : Gateway::IdentifyProperties = DEFAULT_PROPERTIES)
-      previous_def(token, client_id, shard, large_threshold, compress, properties)
+    stack_event ready, Gateway::ReadyPayload
 
-      # We add a "default" message event handler that runs incoming messages
-      # across our middleware stacks
-      on_message_create do |message|
-        run_stack(message)
-      end
-    end
+    stack_event resumed, Gateway::ResumedPayload
+
+    stack_event channel_create, Channel
+
+    stack_event channel_update, Channel
+
+    stack_event channel_delete, Channel
+
+    stack_event guild_create, Gateway::GuildCreatePayload
+
+    stack_event guild_update, Guild
+
+    stack_event guild_delete, Gateway::GuildDeletePayload
+
+    stack_event guild_ban_add, Gateway::GuildBanPayload
+
+    stack_event guild_ban_remove, Gateway::GuildBanPayload
+
+    stack_event guild_emoji_update, Gateway::GuildEmojiUpdatePayload
+
+    stack_event guild_integrations_update, Gateway::GuildIntegrationsUpdatePayload
+
+    stack_event guild_member_add, Gateway::GuildMemberAddPayload
+
+    stack_event guild_member_update, Gateway::GuildMemberUpdatePayload
+
+    stack_event guild_member_remove, Gateway::GuildMemberRemovePayload
+
+    stack_event guild_members_chunk, Gateway::GuildMembersChunkPayload
+
+    stack_event guild_role_create, Gateway::GuildRolePayload
+
+    stack_event guild_role_update, Gateway::GuildRolePayload
+
+    stack_event guild_role_delete, Gateway::GuildRoleDeletePayload
+
+    stack_event message_create, Message
+
+    stack_event message_reaction_add, Gateway::MessageReactionPayload
+
+    stack_event message_reaction_remove, Gateway::MessageReactionPayload
+
+    stack_event message_reaction_remove_all, Gateway::MessageReactionRemoveAllPayload
+
+    stack_event message_update, Gateway::MessageUpdatePayload
+
+    stack_event message_delete, Gateway::MessageDeletePayload
+
+    stack_event message_delete_bulk, Gateway::MessageDeleteBulkPayload
+
+    stack_event presence_update, Gateway::PresenceUpdatePayload
+
+    stack_event typing_start, Gateway::TypingStartPayload
+
+    stack_event user_update, User
+
+    stack_event voice_state_update, VoiceState
+
+    stack_event voice_server_update, Gateway::VoiceServerUpdatePayload
   end
 end

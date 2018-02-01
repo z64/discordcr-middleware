@@ -14,7 +14,7 @@ describe DiscordMiddleware::Error do
   describe "#call" do
     it "calls the next middleware" do
       mw = DiscordMiddleware::Error.new("foo")
-      context = Discord::Context.new(Client, message)
+      context = Discord::Context(Discord::Message).new(Client, message)
 
       mw.call(context, ->{ true }).should be_true
     end
@@ -22,7 +22,7 @@ describe DiscordMiddleware::Error do
     context "when the next middleware raises" do
       it "forwards the exception" do
         mw = DiscordMiddleware::Error.new { }
-        context = Discord::Context.new(Client, message)
+        context = Discord::Context(Discord::Message).new(Client, message)
 
         expect_raises(Exception) do
           mw.call(context, ->{ raise "exception" })
@@ -33,7 +33,7 @@ describe DiscordMiddleware::Error do
         it "calls it" do
           called = false
           mw = DiscordMiddleware::Error.new { called = true }
-          context = Discord::Context.new(Client, message)
+          context = Discord::Context(Discord::Message).new(Client, message)
 
           begin
             mw.call(context, ->{ raise "exception" })
@@ -44,20 +44,36 @@ describe DiscordMiddleware::Error do
         end
       end
 
-      context "when the next middleware doesn't raise" do
-        context "when given a block" do
-          it "doesn't call it" do
-            called = false
-            mw = DiscordMiddleware::Error.new { called = true }
-            context = Discord::Context.new(Client, message)
+      context "within a stack" do
+        it "rescues from the entire chain" do
+          called = false
+          mw = DiscordMiddleware::Error.new { called = true }
+          stack = Discord::Stack.new(mw)
+          context = Discord::Context(Discord::Message).new(Client, message)
 
-            begin
-              mw.call(context, ->{ "OK" })
-            rescue
-            end
-
-            called.should be_falsey
+          begin
+            stack.run(context) { raise "exception" }
+          rescue
           end
+
+          called.should be_true
+        end
+      end
+    end
+
+    context "when the next middleware doesn't raise" do
+      context "when given a block" do
+        it "doesn't call it" do
+          called = false
+          mw = DiscordMiddleware::Error.new { called = true }
+          context = Discord::Context(Discord::Message).new(Client, message)
+
+          begin
+            mw.call(context, ->{ "OK" })
+          rescue
+          end
+
+          called.should be_falsey
         end
       end
     end

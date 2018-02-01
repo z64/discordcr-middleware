@@ -7,8 +7,8 @@ class DiscordMiddleware::Author < Discord::Middleware
                  @discriminator : String? = nil, @bot : Bool? = nil)
   end
 
-  def call(context, done)
-    author = context.message.author
+  def call(context : Discord::Context(Discord::Message), done)
+    author = context.payload.author
 
     check_attributes(author)
 

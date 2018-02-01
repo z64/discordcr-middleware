@@ -7,9 +7,9 @@ Discord.add_ctx_property member, Discord::GuildMember?
 Discord.add_ctx_property! member_roles, Array(Discord::Role)
 
 class CachedEvent < Discord::Middleware
-  def call(context, done)
+  def call(context : Discord::Context(Discord::Message), done)
     if cache = context.client.cache
-      message = context.message
+      message = context.payload
 
       channel = context.channel = cache.resolve_channel(message.channel_id)
       if id = channel.guild_id
@@ -34,8 +34,8 @@ client = Discord::Client.new("Bot TOKEN")
 cache = Discord::Cache.new(client)
 client.cache = cache
 
-client.stack(:member, DiscordMiddleware::Prefix.new("!memberinfo"), CachedEvent.new) do |context|
-  distinct = "#{context.message.author.username}##{context.message.author.discriminator}"
+client.on_message_create(DiscordMiddleware::Prefix.new("!memberinfo"), CachedEvent.new) do |context|
+  distinct = "#{context.payload.author.username}##{context.payload.author.discriminator}"
   if member = context.member
     nick = member.nick
 

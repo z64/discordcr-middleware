@@ -7,45 +7,32 @@ module Discord
   # To call the next middleware in the chain, call `done.call`. If you
   # don't do this, the middleware stack will stop at that point.
   abstract class Middleware
-    abstract def call(context, done)
+    def call(context, done)
+      raise {{@type.stringify}} + " does not support #{context.class}!"
+    end
   end
 
   # A collection of `Middleware` that can be processed by
   # passing a `Message` to `Stack#run`.
   class Stack
-    getter client : Client
-
-    getter block
-
-    def initialize(@client, *middlewares)
+    def initialize(*middlewares)
       @middlewares = [] of Middleware
       middlewares.each { |m| @middlewares << m }
-      @block = nil
     end
 
-    def initialize(@client, *middlewares, &block : Context ->)
-      @middlewares = [] of Middleware
-      middlewares.each { |m| @middlewares << m }
-      @block = block
-    end
-
-    # Whether this stack has a trailing block
-    def block?
-      !@block.nil?
+    # Runs a message through this middleware stack, with a trailing block
+    def run(context : Context(T), index = 0, &block : Context(T) ->) forall T
+      if mw = @middlewares[index]?
+        mw.call context, ->{ run(context, index + 1, &block) }
+      else
+        block.call(context)
+      end
     end
 
     # Runs a message through this middleware stack
-    def run(message : Message)
-      context = Context.new(client, message)
-      self.next(0, context)
-    end
-
-    # Advances to the next middleware in the chain
-    def next(index, context)
-      if mw = @middlewares[index]?
-        mw.call context, ->{ self.next(index + 1, context) }
-      else
-        @block.try &.call(context)
+    def run(context : Context(T), index = 0) forall T
+      @middlewares[index]?.try do |mw|
+        mw.call context, ->{ run(context, index + 1) }
       end
     end
   end

@@ -7,13 +7,13 @@ describe DiscordMiddleware::CachedEvent do
 
   it "always calls the next middleware" do
     mw = DiscordMiddleware::CachedEvent.new
-    context = Discord::Context.new(Client, message(author_id: 120571255635181568))
+    context = Discord::Context(Discord::Message).new(Client, message(author_id: 120571255635181568))
     mw.call(context, ->{ true }).should be_true
   end
 
   it "caches each property" do
     mw = DiscordMiddleware::CachedEvent.new
-    context = Discord::Context.new(Client, message(author_id: 120571255635181568))
+    context = Discord::Context(Discord::Message).new(Client, message(author_id: 120571255635181568))
 
     test = ->do
       context.channel.should eq channel

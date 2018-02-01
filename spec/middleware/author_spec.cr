@@ -15,7 +15,7 @@ describe DiscordMiddleware::Author do
     context "with a matching author" do
       it "calls the next middleware" do
         mw = DiscordMiddleware::Author.new(username: "z64")
-        context = Discord::Context.new(Client, message)
+        context = Discord::Context(Discord::Message).new(Client, message)
 
         mw.call(context, ->{ true }).should be_true
       end
@@ -24,7 +24,7 @@ describe DiscordMiddleware::Author do
     context "with a author that doesn't match" do
       it "doesn't call the next middleware" do
         mw = DiscordMiddleware::Author.new(username: "y32")
-        context = Discord::Context.new(Client, message)
+        context = Discord::Context(Discord::Message).new(Client, message)
 
         mw.call(context, ->{ true }).should be_falsey
       end

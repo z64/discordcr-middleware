@@ -46,12 +46,12 @@ module DiscordMiddleware
 
     private def resolve_guild(context)
       if cache = context.client.cache
-        channel = cache.resolve_channel(context.message.channel_id)
+        channel = cache.resolve_channel(context.payload.channel_id)
         if guild_id = channel.guild_id
           cache.resolve_guild(guild_id)
         end
       else
-        channel = context.client.get_channel(context.message.channel_id)
+        channel = context.client.get_channel(context.payload.channel_id)
         if guild_id = channel.guild_id
           context.client.get_guild(guild_id)
         end
@@ -61,26 +61,26 @@ module DiscordMiddleware
     private def rate_limit_reply(context, time)
       if message = @message
         content = message.gsub("%time%", time.to_s)
-        context.client.create_message(context.message.channel_id, content)
+        context.client.create_message(context.payload.channel_id, content)
       end
     end
 
-    def call(context, done)
+    def call(context : Discord::Context(Discord::Message), done)
       case key = @key
       when RateLimiterKey::UserID
-        if time = @limiter.rate_limited?(@bucket, context.message.author.id)
+        if time = @limiter.rate_limited?(@bucket, context.payload.author.id)
           rate_limit_reply(context, time)
           return
         end
       when RateLimiterKey::ChannelID
-        if time = @limiter.rate_limited?(@bucket, context.message.channel_id)
+        if time = @limiter.rate_limited?(@bucket, context.payload.channel_id)
           rate_limit_reply(context, time)
           return
         end
       when RateLimiterKey::GuildID
-        if guild_id = get_channel(context.client, context.message.channel_id).guild_id
+        if guild_id = get_channel(context.client, context.payload.channel_id).guild_id
           if guild = get_guild(context.client, guild_id)
-            if time = @limiter.rate_limited?(@bucket, context.message.channel_id)
+            if time = @limiter.rate_limited?(@bucket, context.payload.channel_id)
               rate_limit_reply(context, time)
               return
             end

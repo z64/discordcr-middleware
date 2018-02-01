@@ -14,16 +14,16 @@ class DiscordMiddleware::Error < Discord::Middleware
     @block = nil
   end
 
-  def initialize(&block : Discord::Context ->)
+  def initialize(&block : Discord::Context(Discord::Message) ->)
     @message = nil
     @block = block
   end
 
-  def call(context, done)
+  def call(context : Discord::Context(Discord::Message), done)
     done.call
   rescue ex
     if message = @message
-      channel_id = context.message.channel_id
+      channel_id = context.payload.channel_id
       message = message.gsub("%exception%", ex.message)
       context.client.create_message(channel_id, message)
     end

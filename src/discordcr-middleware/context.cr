@@ -1,9 +1,9 @@
 module Discord
   # A container for shared state throughout processing of a message
-  class Context
+  class Context(P)
     getter client : Client
 
-    getter message : Message
+    getter payload : P
 
     getter state = {} of String => Nil | String | Int32 | Int64 | Float64 | Bool
 
@@ -13,7 +13,7 @@ module Discord
     property float : Float32 | Float64 | Nil
     property bool : Bool?
 
-    def initialize(@client : Client, @message : Message)
+    def initialize(@client : Client, @payload : P)
     end
   end
 

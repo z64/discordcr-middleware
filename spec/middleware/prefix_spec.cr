@@ -6,7 +6,7 @@ describe DiscordMiddleware::Prefix do
   context "with a matching string" do
     it "passes" do
       msg = message("!ping")
-      context = Discord::Context.new(Client, msg)
+      context = Discord::Context(Discord::Message).new(Client, msg)
 
       mw.call(context, ->{ true }).should be_true
     end
@@ -15,7 +15,7 @@ describe DiscordMiddleware::Prefix do
   context "with a mismatching string" do
     it "doesn't pass" do
       msg = message("!pong")
-      context = Discord::Context.new(Client, msg)
+      context = Discord::Context(Discord::Message).new(Client, msg)
 
       mw.call(context, ->{ true }).should be_falsey
     end

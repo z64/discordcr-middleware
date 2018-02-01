@@ -11,7 +11,7 @@ class DiscordMiddleware::Channel < Discord::Middleware
 
   # The channel from the message event
   private def channel(context)
-    channel_id = context.message.channel_id
+    channel_id = context.payload.channel_id
 
     if cache = context.client.cache
       cache.resolve_channel(channel_id)
@@ -20,7 +20,7 @@ class DiscordMiddleware::Channel < Discord::Middleware
     end
   end
 
-  def call(context, done)
+  def call(context : Discord::Context(Discord::Message), done)
     ch = channel(context)
 
     check_attributes(ch)

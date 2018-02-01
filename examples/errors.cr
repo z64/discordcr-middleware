@@ -10,7 +10,7 @@ class ErrorCatcher < Discord::Middleware
   def call(context, done)
     done.call
   rescue ex
-    channel_id = context.message.channel_id
+    channel_id = context.payload.channel_id
     context.client.create_message(channel_id, "Sorry, an error occurred: #{ex}")
     raise ex
   end
@@ -18,7 +18,7 @@ end
 
 client = Discord::Client.new("Bot TOKEN")
 
-client.stack(:error, DiscordMiddleware::Prefix.new("!test"), ErrorCatcher.new) do |context|
+client.on_message_create(DiscordMiddleware::Prefix.new("!test"), ErrorCatcher.new) do |context|
   raise "Woops!"
 end
 

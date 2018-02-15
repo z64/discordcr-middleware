@@ -26,14 +26,26 @@ class DiscordMiddleware::DiscoParser < Discord::Middleware
 
   # A single argument, a component of an `ArgumentSet`
   class Argument
+    # Name of this argument
+    getter name
+
+    # Number of raw arguments that compose this argument
+    getter count
+
+    # Wheter this argument is required
+    getter required
+
+    # Types this argument supportsa
+    getter types
+
+    # Whether this is a "catch-all" argument
+    getter catch_all
+
     def initialize(@raw : Regex::MatchData, @name : String? = nil,
                    @count : Int32 = 1, @required : Bool = false,
-                   @flag = false, @types : Array(String)? = nil)
+                   @catch_all : Bool = false, @flag = false,
+                   @types : Array(String)? = nil)
       parse(@raw)
-    end
-
-    def count
-      @count.zero? ? 1 : @count
     end
 
     # :nodoc:
@@ -46,7 +58,7 @@ class DiscordMiddleware::DiscoParser < Discord::Middleware
       unless @flag
         if part.ends_with?("...")
           part = part[0..-4]
-          @count = 0
+          @catch_all = true
         elsif part.includes?(' ')
           split = part.split(' ')
           part, @count = split[0], split[1].to_i

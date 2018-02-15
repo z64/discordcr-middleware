@@ -10,6 +10,7 @@ module DiscordMiddleware
           arg.required.should be_true
           arg.count.should eq 1
           arg.types.should eq ["int"]
+          arg.catch_all.should be_false
         end
 
         it "parses an optional argument" do
@@ -27,13 +28,6 @@ module DiscordMiddleware
           arg = DiscoParser::Argument.new(DiscoParser::PARTS_RE.match("<foo:str...>").not_nil!)
           arg.types.should eq ["str"]
           arg.catch_all.should be_true
-        end
-      end
-
-      describe "#count" do
-        it "returns 1 when internal count is 0" do
-          arg = DiscoParser::Argument.new(DiscoParser::PARTS_RE.match("<foo:str...>").not_nil!)
-          arg.count.should eq 1
         end
       end
     end

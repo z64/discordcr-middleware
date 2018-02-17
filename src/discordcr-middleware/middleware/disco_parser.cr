@@ -72,6 +72,10 @@ class DiscordMiddleware::DiscoParser < Discord::Middleware
 
       @name = part.strip
     end
+
+    def optional
+      !required
+    end
   end
 
   # A collection of arguments, fully describing a command spec
@@ -87,10 +91,10 @@ class DiscordMiddleware::DiscoParser < Discord::Middleware
     # :nodoc:
     def parse(spec : String)
       spec.scan(PARTS_RE) do |match|
-        arg = Argument.new(match)
+        next_arg = Argument.new(match)
 
         if @arguments.any?
-          if !@arguments.last.required && arg.required
+          if @arguments.last.optional && next_arg.required
             raise "Required argument cannot come after an optional argument"
           end
 
@@ -99,7 +103,7 @@ class DiscordMiddleware::DiscoParser < Discord::Middleware
           end
         end
 
-        @arguments << arg
+        @arguments << next_arg
       end
     end
   end

@@ -38,6 +38,22 @@ module DiscordMiddleware
           set = DiscoParser::ArgumentSet.new("<foo:str> <bar:int>")
           set.arguments.size.should eq 2
         end
+
+        context "with a required argument after an optional one" do
+          it "raises" do
+            expect_raises(Exception, "Required argument cannot come after an optional argument") do
+              DiscoParser::ArgumentSet.new("[foo] <bar>")
+            end
+          end
+        end
+
+        context "with a regular argument after a catch-all" do
+          it "raises" do
+            expect_raises(Exception, "No arguments can come after a catch-all") do
+              DiscoParser::ArgumentSet.new("<foo...> <bar>")
+            end
+          end
+        end
       end
     end
   end

@@ -87,7 +87,19 @@ class DiscordMiddleware::DiscoParser < Discord::Middleware
     # :nodoc:
     def parse(spec : String)
       spec.scan(PARTS_RE) do |match|
-        @arguments << Argument.new(match)
+        arg = Argument.new(match)
+
+        if @arguments.any?
+          if !@arguments.last.required && arg.required
+            raise "Required argument cannot come after an optional argument"
+          end
+
+          if @arguments.last.catch_all
+            raise "No arguments can come after a catch-all"
+          end
+        end
+
+        @arguments << arg
       end
     end
   end

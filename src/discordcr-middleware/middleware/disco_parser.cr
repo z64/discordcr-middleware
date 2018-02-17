@@ -76,6 +76,20 @@ class DiscordMiddleware::DiscoParser < Discord::Middleware
 
   # A collection of arguments, fully describing a command spec
   class ArgumentSet
+    # The arguments that compose this set
+    getter arguments
+
+    def initialize(@spec_string : String)
+      @arguments = [] of Argument
+      parse(@spec_string)
+    end
+
+    # :nodoc:
+    def parse(spec : String)
+      spec.scan(PARTS_RE) do |match|
+        @arguments << Argument.new(match)
+      end
+    end
   end
 
   def initialize(@spec_string : String)

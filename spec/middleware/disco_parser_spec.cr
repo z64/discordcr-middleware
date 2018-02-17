@@ -33,6 +33,12 @@ module DiscordMiddleware
     end
 
     describe DiscoParser::ArgumentSet do
+      describe "#parse" do
+        it "parses multiple arguments" do
+          set = DiscoParser::ArgumentSet.new("<foo:str> <bar:int>")
+          set.arguments.size.should eq 2
+        end
+      end
     end
   end
 end

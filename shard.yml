@@ -1,5 +1,5 @@
 name: discordcr-middleware
-version: 0.2.1
+version: 0.3.0
 
 authors:
   -  Zac Nowicki <zachnowicki@gmail.com>
@@ -11,6 +11,6 @@ dependencies:
   rate_limiter:
     github: z64/rate_limiter
 
-crystal: 0.24.0
+crystal: 0.24.1
 
 license: MIT

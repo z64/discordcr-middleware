@@ -3,25 +3,15 @@
 # it will be used to resolve the channel the message came from.
 class DiscordMiddleware::Channel < Discord::Middleware
   include AttributeMiddleware
+  include CachedRoutes
 
   def initialize(@id : UInt64? = nil, @name : String? = nil,
                  @topic : String? = nil, @nsfw : Bool? = nil,
                  @guild_id : UInt64? = nil, @type : UInt8? = nil)
   end
 
-  # The channel from the message event
-  private def channel(context)
-    channel_id = context.payload.channel_id
-
-    if cache = context.client.cache
-      cache.resolve_channel(channel_id)
-    else
-      context.client.get_channel(channel_id)
-    end
-  end
-
   def call(context : Discord::Context(Discord::Message), done)
-    ch = channel(context)
+    ch = get_channel(context.client, context.payload.channel_id)
 
     check_attributes(ch)
 

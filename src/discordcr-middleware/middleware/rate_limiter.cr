@@ -44,20 +44,6 @@ module DiscordMiddleware
                    @message : String? = nil)
     end
 
-    private def resolve_guild(context)
-      if cache = context.client.cache
-        channel = cache.resolve_channel(context.payload.channel_id)
-        if guild_id = channel.guild_id
-          cache.resolve_guild(guild_id)
-        end
-      else
-        channel = context.client.get_channel(context.payload.channel_id)
-        if guild_id = channel.guild_id
-          context.client.get_guild(guild_id)
-        end
-      end
-    end
-
     private def rate_limit_reply(context, time)
       if message = @message
         content = message.gsub("%time%", time.to_s)

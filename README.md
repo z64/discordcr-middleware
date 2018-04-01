@@ -34,7 +34,7 @@ class MyMiddleware < Discord::Middleware
   end
 end
 ```
-`context` is an instance of `Discord::Context(P)`, which contains a reference to your `Client` and tthe payload of type `P`, which in this case is the invoking `Message`.
+`context` is an instance of `Discord::Context(P)`, which contains a reference to your `Client` and the payload of type `P`, which in this case is the invoking `Message`.
 
 A custom middleware can be used for multiple kinds of events by adding multiple methods that restrict `context` to the specific payload type.
 

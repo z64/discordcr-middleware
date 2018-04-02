@@ -3,3 +3,13 @@ script:
   - crystal spec
   - crystal tool format --check
   - find examples -name "*.cr" | xargs -L 1 crystal build --no-codegen
+  - crystal docs
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: false
+  local-dir: docs
+  on:
+    branch: master

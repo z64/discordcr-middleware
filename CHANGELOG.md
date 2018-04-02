@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.1
+
+Fixes a bug where stacks were registered across event handlers incorrectly, causing events to be distributed wrongly
+
 ## v0.3.0
 
 This is a large update that adds support for plugin chains on every kind of event handler.

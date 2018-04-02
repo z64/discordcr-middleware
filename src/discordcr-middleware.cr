@@ -4,29 +4,23 @@ require "./discordcr-middleware/*"
 module Discord
   class Client
     macro stack_event(event_name, klass)
-      @{{event_name}}_stacks = [] of Stack
-
       # Creates a `Client#on_{{event_name}}` handler with a middleware chain and
       # trailing block. Handles a `{{klass}}` payload.
       def on_{{event_name}}(*middleware, &block : Context({{klass}}) ->)
-        @{{event_name}}_stacks << Stack.new(*middleware)
+        stack = Stack.new(*middleware)
         on_{{event_name}} do |payload|
-          @{{event_name}}_stacks.each do |stack|
-            context = Discord::Context({{klass}}).new(self, payload)
-            stack.run(context, 0, &block)
-          end
+          context = Discord::Context({{klass}}).new(self, payload)
+          stack.run(context, 0, &block)
         end
       end
 
       # Creates a `Client#on_{{event_name}}` handler with a middleware chain.
       # Handles a `{{klass}}` payload.
       def on_{{event_name}}(*middleware)
-        @{{event_name}}_stacks << Stack.new(*middleware)
+        stack = Stack.new(*middleware)
         on_{{event_name}} do |payload|
-          @{{event_name}}_stacks.each do |stack|
-            context = Discord::Context({{klass}}).new(self, payload)
-            stack.run(context)
-          end
+          context = Discord::Context({{klass}}).new(self, payload)
+          stack.run(context)
         end
       end
     end

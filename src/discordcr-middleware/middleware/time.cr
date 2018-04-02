@@ -6,7 +6,7 @@
 #   context.client.create_message(channel_id, "I'm back!")
 # end
 #
-# client.stack(:foo, delayed) do |context|
+# client.on_message_create(delayed) do |context|
 #   channel_id = context.payload.channel_id
 #   context.client.create_message(channel_id, "Going away for 5 seconds..")
 # end

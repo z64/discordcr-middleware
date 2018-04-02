@@ -12,7 +12,7 @@
 # # handler
 # perms = Discord::Permissions::KickMembers
 #
-# client.stack(:kick, PREFIX, DiscordMiddleware::Permissions.new(perms)) do |ctx|
+# client.on_message_create(PREFIX, DiscordMiddleware::Permissions.new(perms)) do |ctx|
 #   # Kick 'em
 # end
 # ```

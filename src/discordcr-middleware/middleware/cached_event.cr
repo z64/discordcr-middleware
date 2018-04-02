@@ -14,7 +14,7 @@ module DiscordMiddleware
   # - The member the message was from
   # - The member's roles
   # ```
-  # client.stack(:member, DiscordMiddleware::Prefix.new("!info"), DiscordMiddleware::CachedEvent.new) do |ctx|
+  # client.on_message_create(DiscordMiddleware::Prefix.new("!info"), DiscordMiddleware::CachedEvent.new) do |ctx|
   #   ctx.channel      # => Channel
   #   ctx.guild        # => Guild?
   #   ctx.member       # => Member?

@@ -3,6 +3,8 @@
 An extension of [discordcr's](https://github.com/meew0/discordcr) `Client` that adds middleware functionality, similar to that of webserver libraries.
 The goal is provide a very customizable way to conditionally execute event handlers, and make great reuse of code and state between events.
 
+- [Documentation](https://z64.github.io/discordcr-middleware)
+
 ## Installation
 
 Add this to your application's `shard.yml`:

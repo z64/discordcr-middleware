@@ -94,16 +94,17 @@ class DiscordMiddleware::Permissions
   end
 
   def call(payload : Discord::Message, context : Discord::Context)
-    channel = get_channel(context.client, payload.channel_id)
+    client = context[Discord::Client]
+    channel = get_channel(client, payload.channel_id)
     user_id = payload.author.id
 
     if guild_id = channel.guild_id
-      guild = get_guild(context.client, guild_id)
+      guild = get_guild(client, guild_id)
 
       # Pass if the user is the owner of the guild
       yield if guild.owner_id == user_id
 
-      member = get_member(context.client, guild_id, user_id)
+      member = get_member(client, guild_id, user_id)
       permissions = base_permissions_for(member, in: guild)
 
       # Pass if user has an administrator role

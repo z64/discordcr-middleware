@@ -27,7 +27,7 @@ describe Discord::Stack do
     it "calls each middleware" do
       middlewares = {TestMiddleware.new, TestMiddleware.new}
       stack = Discord::Stack.new(*middlewares)
-      stack.run(1, Discord::Context.new(Client))
+      stack.run(1, Discord::Context.new)
 
       middlewares.each do |mw|
         mw.called.should be_true
@@ -37,7 +37,7 @@ describe Discord::Stack do
     it "runs middleware handles multiple kinds of events" do
       middleware = TestMiddleware.new
       stack = Discord::Stack.new(middleware)
-      context = Discord::Context.new(Client)
+      context = Discord::Context.new
 
       stack.run(1, context)
       middleware.called.should be_true
@@ -51,7 +51,7 @@ describe Discord::Stack do
       it "doesn't continue" do
         middlewares = {FlagMiddleware.new, StopMiddleware.new, FlagMiddleware.new}
         stack = Discord::Stack.new(*middlewares)
-        context = Discord::Context.new(Client)
+        context = Discord::Context.new
 
         stack.run(message, context)
         (middlewares[0].called && middlewares[1].called).should be_true
@@ -61,7 +61,7 @@ describe Discord::Stack do
 
     it "accepts a block" do
       stack = Discord::Stack.new(TestMiddleware.new, TestMiddleware.new)
-      context = Discord::Context.new(Client)
+      context = Discord::Context.new
 
       ran = false
       stack.run(1, context) do |ctx|

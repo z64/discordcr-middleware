@@ -54,7 +54,8 @@ describe DiscordMiddleware::Permissions do
         perms = Discord::Permissions.flags(ReadMessages, CreateInstantInvite)
         mw = DiscordMiddleware::Permissions.new(perms)
 
-        context = Discord::Context.new(Client)
+        context = Discord::Context.new
+        context.put(Client)
         mw.call(message(author_id: 1), context) { true }.should be_true
       end
     end
@@ -64,7 +65,8 @@ describe DiscordMiddleware::Permissions do
         perms = Discord::Permissions.flags(SendMessages, ReadMessages, CreateInstantInvite)
         mw = DiscordMiddleware::Permissions.new(perms)
 
-        context = Discord::Context.new(Client)
+        context = Discord::Context.new
+        context.put(Client)
         mw.call(message(author_id: 1), context) { true }.should be_falsey
       end
     end

@@ -15,7 +15,7 @@ describe DiscordMiddleware::Time do
     it "calls the next middleware right away" do
       mw = DiscordMiddleware::Time.new(5.milliseconds) { |ctx| true }
       msg = message
-      context = Discord::Context.new(Client)
+      context = Discord::Context.new
 
       mw.call(msg, context) { true }.should be_true
     end
@@ -24,7 +24,7 @@ describe DiscordMiddleware::Time do
       called = false
       mw = DiscordMiddleware::Time.new(5.milliseconds) { |ctx| called = true }
       msg = message
-      context = Discord::Context.new(Client)
+      context = Discord::Context.new
 
       mw.call(msg, context) { true }
       called.should be_false

@@ -9,20 +9,24 @@ module Discord
       def on_{{event_name}}(*middleware, &block : {{klass}}, Context ->)
         stack = Stack.new(*middleware)
         on_{{event_name}} do |payload|
-          context = Discord::Context.new(self)
+          context = Discord::Context.new
+          context.put(self)
+          middleware.each { |mw| context.put mw }
           stack.run(payload, context, 0, &block)
-        end
-      end
+       end
+     end
 
       # Creates a `Client#on_{{event_name}}` handler with a middleware chain.
       # Handles a `{{klass}}` payload.
       def on_{{event_name}}(*middleware)
         stack = Stack.new(*middleware)
         on_{{event_name}} do |payload|
-          context = Discord::Context.new(self)
+          context = Discord::Context.new
+          context.put(self)
+          middleware.each { |mw| context.put mw }
           stack.run(payload, context)
-        end
-      end
+       end
+     end
     end
 
     stack_event dispatch, {String, IO::Memory}

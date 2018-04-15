@@ -12,7 +12,8 @@ class DiscordMiddleware::Channel
   end
 
   def call(payload : Discord::Message, context : Discord::Context)
-    ch = get_channel(context.client, payload.channel_id)
+    client = context[Discord::Client]
+    ch = get_channel(client, payload.channel_id)
     check_attributes(ch)
     yield
   end

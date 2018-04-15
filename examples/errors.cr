@@ -13,7 +13,7 @@ class ErrorCatcher
     yield
   rescue ex
     channel_id = payload.channel_id
-    context.client.create_message(channel_id, "Sorry, an error occurred: #{ex}")
+    context[Discord::Client].create_message(channel_id, "Sorry, an error occurred: #{ex}")
     raise ex
   end
 end

@@ -27,7 +27,7 @@ class DiscordMiddleware::Error
     if message = @message
       channel_id = payload.channel_id
       message = message.gsub("%exception%", ex.message)
-      context.client.create_message(channel_id, message)
+      context[Discord::Client].create_message(channel_id, message)
     end
 
     @block.try &.call(payload, context)

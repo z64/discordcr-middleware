@@ -13,7 +13,8 @@ describe DiscordMiddleware::RateLimiter do
           limiter,
           :foo
         )
-        ctx = Discord::Context.new(Client)
+        ctx = Discord::Context.new
+        ctx.put(Client)
 
         mw.call(message, ctx) { true }.should be_true
       end
@@ -25,7 +26,8 @@ describe DiscordMiddleware::RateLimiter do
           limiter,
           :foo
         )
-        ctx = Discord::Context.new(Client)
+        ctx = Discord::Context.new
+        ctx.put(Client)
 
         mw.call(message, ctx) { true }
         mw.call(message, ctx) { true }.should be_falsey
@@ -37,7 +39,8 @@ describe DiscordMiddleware::RateLimiter do
             limiter,
             :foo
           )
-          ctx = Discord::Context.new(Client)
+          ctx = Discord::Context.new
+          ctx.put(Client)
           msg_a = message(author_id: 0)
           msg_b = message(author_id: 1)
 

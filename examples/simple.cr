@@ -1,19 +1,18 @@
 require "../src/discordcr-middleware"
 
-# Extend the `Context` class with some custom properties to share
-# state between middlewares
-Discord.add_ctx_property!(channel, Discord::Channel)
-Discord.add_ctx_property(guild, Discord::Guild?)
-
 # A basic middleware to cache the Channel and Guild from the invoking
 # message. The attached client can be accessed by `context.client`.
-class Common
+class Cached
   include Discord::Middleware
 
+  getter! channel : Discord::Channel
+  getter guild : Discord::Guild?
+
   def call(payload : Discord::Message, context : Discord::Context)
-    channel = context.channel = context.client.get_channel(payload.channel_id)
+    client = context[Discord::Client]
+    @channel = channel = client.get_channel(payload.channel_id)
     if id = channel.guild_id
-      context.guild = context.client.get_guild(id)
+      @guild = client.get_guild(id)
     end
     yield
   end
@@ -37,11 +36,11 @@ class Test
 
   def call(payload : Discord::Message, context : Discord::Context, &block)
     info = <<-DOC
-    Channel: #{context.channel.name}
-    Guild: #{context.guild.try &.name}
+    Channel: #{context[Cached].channel.name}
+    Guild: #{context[Cached].guild.try &.name}
     DOC
 
-    context.client.create_message(context.channel.id, info)
+    context[Discord::Client].create_message(payload.channel_id, info)
   end
 end
 
@@ -55,6 +54,6 @@ client = Discord::Client.new("Bot TOKEN")
 #
 # Since `Middleware` does not define `#initialize`, it is used here to set the prefix
 # it will check for. This also means `Prefix` can be reused on any `stack`.
-client.on_message_create(Common.new, Prefix.new("!test"), Test.new)
+client.on_message_create(Prefix.new("!test"), Cached.new, Test.new)
 
 client.run

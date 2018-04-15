@@ -15,14 +15,14 @@ describe DiscordMiddleware::Error do
   describe "#call" do
     it "calls the next middleware" do
       mw = DiscordMiddleware::Error.new("foo")
-      context = Discord::Context.new(Client)
+      context = Discord::Context.new
       mw.call(message, context) { true }.should be_true
     end
 
     context "when the next middleware raises" do
       it "forwards the exception" do
         mw = DiscordMiddleware::Error.new { }
-        context = Discord::Context.new(Client)
+        context = Discord::Context.new
         msg = message
 
         expect_raises(Exception) do
@@ -34,7 +34,7 @@ describe DiscordMiddleware::Error do
         it "calls it" do
           called = false
           mw = DiscordMiddleware::Error.new { called = true }
-          context = Discord::Context.new(Client)
+          context = Discord::Context.new
 
           begin
             mw.call(message, context) { raise "exception" }
@@ -50,7 +50,7 @@ describe DiscordMiddleware::Error do
           called = false
           mw = DiscordMiddleware::Error.new { called = true }
           stack = Discord::Stack.new(mw)
-          context = Discord::Context.new(Client)
+          context = Discord::Context.new
 
           begin
             stack.run(message, context) { raise "exception" }
@@ -67,7 +67,7 @@ describe DiscordMiddleware::Error do
         it "doesn't call it" do
           called = false
           mw = DiscordMiddleware::Error.new { called = true }
-          context = Discord::Context.new(Client)
+          context = Discord::Context.new
 
           begin
             mw.call(message, context) { true }

@@ -9,18 +9,20 @@ describe DiscordMiddleware::CachedEvent do
 
   it "always calls the next middleware" do
     mw = DiscordMiddleware::CachedEvent.new
-    context = Discord::Context.new(Client)
+    context = Discord::Context.new
+    context.put(Client)
     mw.call(message(author_id: 120571255635181568), context) { true }.should be_true
   end
 
   it "caches each property" do
     mw = DiscordMiddleware::CachedEvent.new
-    context = Discord::Context.new(Client)
+    context = Discord::Context.new
+    context.put(Client)
 
     mw.call(message(author_id: 120571255635181568), context) { true }
-    context.channel.should eq channel
-    context.guild.should eq guild
-    context.member.should eq member
-    context.member_roles.map(&.id).should eq member.roles
+    mw.channel.should eq channel
+    mw.guild.should eq guild
+    mw.member.should eq member
+    mw.member_roles.map(&.id).should eq member.roles
   end
 end

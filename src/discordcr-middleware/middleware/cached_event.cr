@@ -1,11 +1,5 @@
 require "./cached_routes"
 
-# Add properties onto our context storage
-Discord.add_ctx_property! channel, Discord::Channel
-Discord.add_ctx_property guild, Discord::Guild?
-Discord.add_ctx_property member, Discord::GuildMember?
-Discord.add_ctx_property! member_roles, Array(Discord::Role)
-
 module DiscordMiddleware
   # When a message is passed through this middleware, it caches several
   # common properties one might make for typical commands:
@@ -26,13 +20,19 @@ module DiscordMiddleware
     include Discord::Middleware
     include DiscordMiddleware::CachedRoutes
 
+    getter! channel : Discord::Channel
+    getter guild : Discord::Guild?
+    getter member : Discord::GuildMember?
+    getter! member_roles : Array(Discord::Role)
+
     def call(payload : Discord::Message, context : Discord::Context)
-      context.channel = channel = get_channel(context.client, payload.channel_id)
+      client = context[Discord::Client]
+      @channel = channel = get_channel(client, payload.channel_id)
 
       if guild_id = channel.guild_id
-        context.guild = guild = get_guild(context.client, guild_id)
-        context.member = member = get_member(context.client, guild_id, payload.author.id)
-        context.member_roles = guild.roles.select { |r| member.roles.includes?(r.id) }
+        @guild = guild = get_guild(client, guild_id)
+        @member = member = get_member(client, guild_id, payload.author.id)
+        @member_roles = guild.roles.select { |r| member.roles.includes?(r.id) }
       end
 
       yield

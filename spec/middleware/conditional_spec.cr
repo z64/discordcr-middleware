@@ -17,7 +17,7 @@ describe DiscordMiddleware::Conditional do
     context "when truthy" do
       it "calls the next middleware" do
         msg = message("!ping")
-        context = Discord::Context.new(Client)
+        context = Discord::Context.new
         mw.call(msg, context) { true }.should be_true
       end
     end
@@ -25,7 +25,7 @@ describe DiscordMiddleware::Conditional do
     context "when falsey" do
       it "doesn't call the next middleware" do
         msg = message("!pong")
-        context = Discord::Context.new(Client)
+        context = Discord::Context.new
         mw.call(msg, context) { true }.should be_falsey
       end
     end

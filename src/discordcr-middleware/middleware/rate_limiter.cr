@@ -45,30 +45,32 @@ module DiscordMiddleware
                    @message : String? = nil)
     end
 
-    private def rate_limit_reply(payload, context, time)
+    private def rate_limit_reply(client, channel_id, time)
       if message = @message
         content = message.gsub("%time%", time.to_s)
-        context.client.create_message(payload.channel_id, content)
+        client.create_message(channel_id, content)
       end
     end
 
     def call(payload : Discord::Message, context : Discord::Context)
+      client = context[Discord::Client]
+
       case key = @key
       when RateLimiterKey::UserID
         if time = @limiter.rate_limited?(@bucket, payload.author.id)
-          rate_limit_reply(payload, context, time)
+          rate_limit_reply(client, payload.channel_id, time)
           return
         end
       when RateLimiterKey::ChannelID
         if time = @limiter.rate_limited?(@bucket, payload.channel_id)
-          rate_limit_reply(payload, context, time)
+          rate_limit_reply(client, payload.channel_id, time)
           return
         end
       when RateLimiterKey::GuildID
-        if guild_id = get_channel(context.client, payload.channel_id).guild_id
-          if guild = get_guild(context.client, guild_id)
+        if guild_id = get_channel(client, payload.channel_id).guild_id
+          if guild = get_guild(client, guild_id)
             if time = @limiter.rate_limited?(@bucket, payload.channel_id)
-              rate_limit_reply(payload, context, time)
+              rate_limit_reply(client, payload.channel_id, time)
               return
             end
           end

@@ -1,4 +1,6 @@
 require "../spec_helper"
+require "../../src/discordcr-middleware/middleware/attribute"
+require "../../src/discordcr-middleware/middleware/author"
 
 describe DiscordMiddleware::Author do
   describe "#initialize" do
@@ -15,18 +17,18 @@ describe DiscordMiddleware::Author do
     context "with a matching author" do
       it "calls the next middleware" do
         mw = DiscordMiddleware::Author.new(username: "z64")
-        context = Discord::Context(Discord::Message).new(Client, message)
+        context = Discord::Context.new(Client)
 
-        mw.call(context, ->{ true }).should be_true
+        mw.call(message, context) { true }.should be_true
       end
     end
 
     context "with a author that doesn't match" do
       it "doesn't call the next middleware" do
         mw = DiscordMiddleware::Author.new(username: "y32")
-        context = Discord::Context(Discord::Message).new(Client, message)
+        context = Discord::Context.new(Client)
 
-        mw.call(context, ->{ true }).should be_falsey
+        mw.call(message, context) { true }.should be_falsey
       end
     end
   end

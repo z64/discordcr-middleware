@@ -1,4 +1,7 @@
 require "../spec_helper"
+require "../../src/discordcr-middleware/middleware/attribute"
+require "../../src/discordcr-middleware/middleware/cached_event"
+require "../../src/discordcr-middleware/middleware/channel"
 
 describe DiscordMiddleware::Channel do
   ch = channel
@@ -36,18 +39,16 @@ describe DiscordMiddleware::Channel do
     context "with a matching channel" do
       it "calls the next middleware" do
         mw = DiscordMiddleware::Channel.new(name: "devs")
-        context = Discord::Context(Discord::Message).new(Client, message)
-
-        mw.call(context, ->{ true }).should be_true
+        context = Discord::Context.new(Client)
+        mw.call(message, context) { true }.should be_true
       end
     end
 
     context "with a channel that doesn't match" do
       it "doesn't call the next middleware" do
         mw = DiscordMiddleware::Channel.new(name: "memes")
-        context = Discord::Context(Discord::Message).new(Client, message)
-
-        mw.call(context, ->{ true }).should be_falsey
+        context = Discord::Context.new(Client)
+        mw.call(message, context) { true }.should be_falsey
       end
     end
   end

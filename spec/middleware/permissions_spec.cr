@@ -1,4 +1,6 @@
 require "../spec_helper"
+require "../../src/discordcr-middleware/middleware/cached_routes"
+require "../../src/discordcr-middleware/middleware/permissions"
 
 describe DiscordMiddleware::Permissions do
   describe "#base_permissions_for" do
@@ -52,8 +54,8 @@ describe DiscordMiddleware::Permissions do
         perms = Discord::Permissions.flags(ReadMessages, CreateInstantInvite)
         mw = DiscordMiddleware::Permissions.new(perms)
 
-        context = Discord::Context(Discord::Message).new(Client, message(author_id: 1))
-        mw.call(context, ->{ true }).should be_true
+        context = Discord::Context.new(Client)
+        mw.call(message(author_id: 1), context) { true }.should be_true
       end
     end
 
@@ -62,8 +64,8 @@ describe DiscordMiddleware::Permissions do
         perms = Discord::Permissions.flags(SendMessages, ReadMessages, CreateInstantInvite)
         mw = DiscordMiddleware::Permissions.new(perms)
 
-        context = Discord::Context(Discord::Message).new(Client, message(author_id: 1))
-        mw.call(context, ->{ true }).should be_falsey
+        context = Discord::Context.new(Client)
+        mw.call(message(author_id: 1), context) { true }.should be_falsey
       end
     end
   end

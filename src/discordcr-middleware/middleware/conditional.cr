@@ -2,10 +2,10 @@
 # conditions from the context or elsewhere, but don't want to write
 # your own middleware to do it.
 class DiscordMiddleware::Conditional
-  def initialize(@condition : Proc(Discord::Context(Discord::Message), Bool))
+  def initialize(@condition : Proc(Discord::Message, Discord::Context, Bool))
   end
 
-  def call(context : Discord::Context(Discord::Message), done)
-    done.call if @condition.call(context)
+  def call(payload : Discord::Message, context : Discord::Context)
+    yield if @condition.call(payload, context)
   end
 end

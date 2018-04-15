@@ -22,19 +22,20 @@ module DiscordMiddleware
   # end
   # ```
   # If the cache is enabled on the client (recommended) it will be used.
-  class CachedEvent < Discord::Middleware
+  class CachedEvent
+    include Discord::Middleware
     include DiscordMiddleware::CachedRoutes
 
-    def call(context : Discord::Context(Discord::Message), done)
-      context.channel = channel = get_channel(context.client, context.payload.channel_id)
+    def call(payload : Discord::Message, context : Discord::Context)
+      context.channel = channel = get_channel(context.client, payload.channel_id)
 
       if guild_id = channel.guild_id
         context.guild = guild = get_guild(context.client, guild_id)
-        context.member = member = get_member(context.client, guild_id, context.payload.author.id)
+        context.member = member = get_member(context.client, guild_id, payload.author.id)
         context.member_roles = guild.roles.select { |r| member.roles.includes?(r.id) }
       end
 
-      done.call
+      yield
     end
   end
 end

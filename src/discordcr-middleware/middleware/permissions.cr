@@ -16,7 +16,8 @@
 #   # Kick 'em
 # end
 # ```
-class DiscordMiddleware::Permissions < Discord::Middleware
+class DiscordMiddleware::Permissions
+  include Discord::Middleware
   include DiscordMiddleware::CachedRoutes
 
   # The permissions a user has in a direct message
@@ -92,28 +93,28 @@ class DiscordMiddleware::Permissions < Discord::Middleware
     base_permissions
   end
 
-  def call(context : Discord::Context(Discord::Message), done)
-    channel = get_channel(context.client, context.payload.channel_id)
-    user_id = context.payload.author.id
+  def call(payload : Discord::Message, context : Discord::Context)
+    channel = get_channel(context.client, payload.channel_id)
+    user_id = payload.author.id
 
     if guild_id = channel.guild_id
       guild = get_guild(context.client, guild_id)
 
       # Pass if the user is the owner of the guild
-      return done.call if guild.owner_id == user_id
+      yield if guild.owner_id == user_id
 
       member = get_member(context.client, guild_id, user_id)
       permissions = base_permissions_for(member, in: guild)
 
       # Pass if user has an administrator role
-      return done.call if permissions.administrator?
+      yield if permissions.administrator?
 
       # Evaluate channel overwrites
       overwrites = overwrites_for(member, in: channel, with: permissions)
 
-      done.call if (@permissions & overwrites) == @permissions
+      yield if (@permissions & overwrites) == @permissions
     else
-      done.call if (@permissions & DM_PERMISSIONS) == @permissions
+      yield if (@permissions & DM_PERMISSIONS) == @permissions
     end
   end
 end

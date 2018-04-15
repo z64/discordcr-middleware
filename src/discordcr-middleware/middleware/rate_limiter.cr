@@ -36,7 +36,8 @@ module DiscordMiddleware
   #   # Post memes, but not too quickly per-channel
   # end
   # ```
-  class RateLimiter < Discord::Middleware
+  class RateLimiter
+    include Discord::Middleware
     include DiscordMiddleware::CachedRoutes
 
     def initialize(@limiter : ::RateLimiter(UInt64), @bucket : Symbol,
@@ -44,37 +45,37 @@ module DiscordMiddleware
                    @message : String? = nil)
     end
 
-    private def rate_limit_reply(context, time)
+    private def rate_limit_reply(payload, context, time)
       if message = @message
         content = message.gsub("%time%", time.to_s)
-        context.client.create_message(context.payload.channel_id, content)
+        context.client.create_message(payload.channel_id, content)
       end
     end
 
-    def call(context : Discord::Context(Discord::Message), done)
+    def call(payload : Discord::Message, context : Discord::Context)
       case key = @key
       when RateLimiterKey::UserID
-        if time = @limiter.rate_limited?(@bucket, context.payload.author.id)
-          rate_limit_reply(context, time)
+        if time = @limiter.rate_limited?(@bucket, payload.author.id)
+          rate_limit_reply(payload, context, time)
           return
         end
       when RateLimiterKey::ChannelID
-        if time = @limiter.rate_limited?(@bucket, context.payload.channel_id)
-          rate_limit_reply(context, time)
+        if time = @limiter.rate_limited?(@bucket, payload.channel_id)
+          rate_limit_reply(payload, context, time)
           return
         end
       when RateLimiterKey::GuildID
-        if guild_id = get_channel(context.client, context.payload.channel_id).guild_id
+        if guild_id = get_channel(context.client, payload.channel_id).guild_id
           if guild = get_guild(context.client, guild_id)
-            if time = @limiter.rate_limited?(@bucket, context.payload.channel_id)
-              rate_limit_reply(context, time)
+            if time = @limiter.rate_limited?(@bucket, payload.channel_id)
+              rate_limit_reply(payload, context, time)
               return
             end
           end
         end
       end
 
-      done.call
+      yield
     end
   end
 end

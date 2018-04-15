@@ -6,10 +6,12 @@ Discord.add_ctx_property guild, Discord::Guild?
 Discord.add_ctx_property member, Discord::GuildMember?
 Discord.add_ctx_property! member_roles, Array(Discord::Role)
 
-class CachedEvent < Discord::Middleware
-  def call(context : Discord::Context(Discord::Message), done)
+class CachedEvent
+  include Discord::Middleware
+
+  def call(payload : Discord::Message, context : Discord::Context)
     if cache = context.client.cache
-      message = context.payload
+      message = payload
 
       channel = context.channel = cache.resolve_channel(message.channel_id)
       if id = channel.guild_id
@@ -21,7 +23,7 @@ class CachedEvent < Discord::Middleware
         end
       end
 
-      done.call
+      yield
     else
       raise "Must enable the cache on the client to use this middleware!"
     end
@@ -34,8 +36,8 @@ client = Discord::Client.new("Bot TOKEN")
 cache = Discord::Cache.new(client)
 client.cache = cache
 
-client.on_message_create(DiscordMiddleware::Prefix.new("!memberinfo"), CachedEvent.new) do |context|
-  distinct = "#{context.payload.author.username}##{context.payload.author.discriminator}"
+client.on_message_create(DiscordMiddleware::Prefix.new("!memberinfo"), CachedEvent.new) do |payload, context|
+  distinct = "#{payload.author.username}##{payload.author.discriminator}"
   if member = context.member
     nick = member.nick
 

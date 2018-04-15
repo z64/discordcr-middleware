@@ -6,33 +6,32 @@ module Discord
   # and the client, as well as any additional properties you have added.
   # To call the next middleware in the chain, call `done.call`. If you
   # don't do this, the middleware stack will stop at that point.
-  abstract class Middleware
-    def call(context, done)
-      raise {{@type.stringify}} + " does not support #{context.class}!"
-    end
+  module Middleware
+    abstract def call(context, payload, &block)
   end
 
   # A collection of `Middleware` that can be processed by
   # passing a `Message` to `Stack#run`.
-  class Stack
-    def initialize(*middlewares)
-      @middlewares = [] of Middleware
-      middlewares.each { |m| @middlewares << m }
+  class Stack(*T)
+    @middlewares : T
+
+    def initialize(*middlewares : *T)
+      @middlewares = middlewares
     end
 
     # Runs a message through this middleware stack, with a trailing block
-    def run(context : Context(T), index = 0, &block : Context(T) ->) forall T
+    def run(payload : U, context : Context, index = 0, &block : U, Context ->) forall U
       if mw = @middlewares[index]?
-        mw.call context, ->{ run(context, index + 1, &block) }
+        mw.call(payload, context) { run(payload, context, index + 1, &block) }
       else
-        block.call(context)
+        yield payload, context
       end
     end
 
     # Runs a message through this middleware stack
-    def run(context : Context(T), index = 0) forall T
-      @middlewares[index]?.try do |mw|
-        mw.call context, ->{ run(context, index + 1) }
+    def run(payload : U, context : Discord::Context, index = 0) forall U
+      if mw = @middlewares[index]?
+        mw.call(payload, context) { run(payload, context, index + 1) }
       end
     end
   end

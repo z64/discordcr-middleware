@@ -6,11 +6,13 @@ require "../src/discordcr-middleware/middleware/prefix"
 # raise an Exception in the trailing block, it is caught by ErrorCatcher
 # middleware, which responds with a heartfelt apology and passes the error up.
 
-class ErrorCatcher < Discord::Middleware
-  def call(context, done)
-    done.call
+class ErrorCatcher
+  include Discord::Middleware
+
+  def call(payload, context)
+    yield
   rescue ex
-    channel_id = context.payload.channel_id
+    channel_id = payload.channel_id
     context.client.create_message(channel_id, "Sorry, an error occurred: #{ex}")
     raise ex
   end

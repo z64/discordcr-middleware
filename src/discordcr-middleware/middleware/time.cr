@@ -11,17 +11,19 @@
 #   context.client.create_message(channel_id, "Going away for 5 seconds..")
 # end
 # ```
-class DiscordMiddleware::Time < Discord::Middleware
-  def initialize(@delay : ::Time::Span, &block : Discord::Context(Discord::Message) ->)
+class DiscordMiddleware::Time
+  include Discord::Middleware
+
+  def initialize(@delay : ::Time::Span, &block : Discord::Message, Discord::Context ->)
     @block = block
   end
 
-  def call(context : Discord::Context(Discord::Message), done)
+  def call(payload : Discord::Message, context : Discord::Context)
     spawn do
       sleep @delay
-      @block.call(context)
+      @block.call(payload, context)
     end
 
-    done.call
+    yield
   end
 end

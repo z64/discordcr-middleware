@@ -1,17 +1,16 @@
 # Matches the author the message event was raised with based
 # on several different attributes.
-class DiscordMiddleware::Author < Discord::Middleware
+class DiscordMiddleware::Author
+  include Discord::Middleware
   include AttributeMiddleware
 
   def initialize(@id : UInt64? = nil, @username : String? = nil,
                  @discriminator : String? = nil, @bot : Bool? = nil)
   end
 
-  def call(context : Discord::Context(Discord::Message), done)
-    author = context.payload.author
-
+  def call(payload : Discord::Message, context : Discord::Context)
+    author = payload.author
     check_attributes(author)
-
-    done.call
+    yield
   end
 end

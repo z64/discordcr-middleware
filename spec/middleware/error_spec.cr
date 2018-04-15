@@ -1,4 +1,5 @@
 require "../spec_helper"
+require "../../src/discordcr-middleware/middleware/error"
 
 describe DiscordMiddleware::Error do
   describe "#initialize" do
@@ -14,18 +15,18 @@ describe DiscordMiddleware::Error do
   describe "#call" do
     it "calls the next middleware" do
       mw = DiscordMiddleware::Error.new("foo")
-      context = Discord::Context(Discord::Message).new(Client, message)
-
-      mw.call(context, ->{ true }).should be_true
+      context = Discord::Context.new(Client)
+      mw.call(message, context) { true }.should be_true
     end
 
     context "when the next middleware raises" do
       it "forwards the exception" do
         mw = DiscordMiddleware::Error.new { }
-        context = Discord::Context(Discord::Message).new(Client, message)
+        context = Discord::Context.new(Client)
+        msg = message
 
         expect_raises(Exception) do
-          mw.call(context, ->{ raise "exception" })
+          mw.call(msg, context) { raise "exception" }
         end
       end
 
@@ -33,10 +34,10 @@ describe DiscordMiddleware::Error do
         it "calls it" do
           called = false
           mw = DiscordMiddleware::Error.new { called = true }
-          context = Discord::Context(Discord::Message).new(Client, message)
+          context = Discord::Context.new(Client)
 
           begin
-            mw.call(context, ->{ raise "exception" })
+            mw.call(message, context) { raise "exception" }
           rescue
           end
 
@@ -49,10 +50,10 @@ describe DiscordMiddleware::Error do
           called = false
           mw = DiscordMiddleware::Error.new { called = true }
           stack = Discord::Stack.new(mw)
-          context = Discord::Context(Discord::Message).new(Client, message)
+          context = Discord::Context.new(Client)
 
           begin
-            stack.run(context) { raise "exception" }
+            stack.run(message, context) { raise "exception" }
           rescue
           end
 
@@ -66,10 +67,10 @@ describe DiscordMiddleware::Error do
         it "doesn't call it" do
           called = false
           mw = DiscordMiddleware::Error.new { called = true }
-          context = Discord::Context(Discord::Message).new(Client, message)
+          context = Discord::Context.new(Client)
 
           begin
-            mw.call(context, ->{ "OK" })
+            mw.call(message, context) { true }
           rescue
           end
 

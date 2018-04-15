@@ -1,18 +1,20 @@
 require "../src/discordcr-middleware"
 
-class Prefix < Discord::Middleware
+class Prefix
+  include Discord::Middleware
+
   def initialize(@prefix : String)
   end
 
-  def call(context : Discord::Context(Discord::Message), done)
-    done.call if context.payload.content.starts_with?(@prefix)
+  def call(payload : Discord::Message, context : Discord::Context)
+    yield if payload.content.starts_with?(@prefix)
   end
 end
 
 client = Discord::Client.new("Bot TOKEN")
 
-client.on_message_create(Prefix.new("!ping")) do |context|
-  channel_id = context.payload.channel_id
+client.on_message_create(Prefix.new("!ping")) do |payload|
+  channel_id = payload.channel_id
   client.create_message(channel_id, "pong")
 end
 

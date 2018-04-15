@@ -7,29 +7,35 @@ Discord.add_ctx_property(guild, Discord::Guild?)
 
 # A basic middleware to cache the Channel and Guild from the invoking
 # message. The attached client can be accessed by `context.client`.
-class Common < Discord::Middleware
-  def call(context : Discord::Context(Discord::Message), done)
-    channel = context.channel = context.client.get_channel(context.payload.channel_id)
+class Common
+  include Discord::Middleware
+
+  def call(payload : Discord::Message, context : Discord::Context)
+    channel = context.channel = context.client.get_channel(payload.channel_id)
     if id = channel.guild_id
       context.guild = context.client.get_guild(id)
     end
-    done.call
+    yield
   end
 end
 
 # A basic, customizable prefix check
-class Prefix < Discord::Middleware
+class Prefix
+  include Discord::Middleware
+
   def initialize(@prefix : String)
   end
 
-  def call(context : Discord::Context(Discord::Message), done)
-    done.call if context.payload.content.starts_with?(@prefix)
+  def call(payload : Discord::Message, context : Discord::Context)
+    yield if payload.content.starts_with?(@prefix)
   end
 end
 
 # Responds to the channel with some basic information
-class Test < Discord::Middleware
-  def call(context : Discord::Context(Discord::Message), done)
+class Test
+  include Discord::Middleware
+
+  def call(payload : Discord::Message, context : Discord::Context, &block)
     info = <<-DOC
     Channel: #{context.channel.name}
     Guild: #{context.guild.try &.name}

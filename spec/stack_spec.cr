@@ -1,16 +1,17 @@
 require "./spec_helper"
 
-class TestMiddleware < Discord::Middleware
+class TestMiddleware
+  include Discord::Middleware
   property called = false
 
-  def call(context : Discord::Context(Int32), done)
+  def call(payload : Int32, context)
     @called = true
-    done.call
+    yield
   end
 
-  def call(context : Discord::Context(String), done)
+  def call(payload : String, context)
     @called = true
-    done.call
+    yield
   end
 end
 
@@ -18,7 +19,7 @@ describe Discord::Stack do
   describe "#initialize" do
     it "stores a tuple of middleware as an array" do
       stack = Discord::Stack.new(FlagMiddleware.new)
-      stack.@middlewares.should be_a Array(Discord::Middleware)
+      stack.@middlewares.should be_a Tuple(FlagMiddleware)
     end
   end
 
@@ -26,7 +27,7 @@ describe Discord::Stack do
     it "calls each middleware" do
       middlewares = {TestMiddleware.new, TestMiddleware.new}
       stack = Discord::Stack.new(*middlewares)
-      stack.run(Discord::Context(Int32).new(Client, 1))
+      stack.run(1, Discord::Context.new(Client))
 
       middlewares.each do |mw|
         mw.called.should be_true
@@ -36,35 +37,23 @@ describe Discord::Stack do
     it "runs middleware handles multiple kinds of events" do
       middleware = TestMiddleware.new
       stack = Discord::Stack.new(middleware)
+      context = Discord::Context.new(Client)
 
-      int_context = Discord::Context(Int32).new(Client, 1)
-      str_context = Discord::Context(String).new(Client, "foo")
-
-      stack.run(int_context)
+      stack.run(1, context)
       middleware.called.should be_true
       middleware.called = false
 
-      stack.run(str_context)
+      stack.run("foo", context)
       middleware.called.should be_true
-    end
-
-    it "raises for unsupported event types" do
-      middleware = TestMiddleware.new
-      stack = Discord::Stack.new(middleware)
-      context = Discord::Context(Symbol).new(Client, :unsupported)
-
-      expect_raises(Exception, "TestMiddleware does not support Discord::Context(Symbol)!") do
-        stack.run(context)
-      end
     end
 
     context "with a middleware that doesn't send done.call" do
       it "doesn't continue" do
         middlewares = {FlagMiddleware.new, StopMiddleware.new, FlagMiddleware.new}
         stack = Discord::Stack.new(*middlewares)
-        context = Discord::Context(Discord::Message).new(Client, message)
+        context = Discord::Context.new(Client)
 
-        stack.run(context)
+        stack.run(message, context)
         (middlewares[0].called && middlewares[1].called).should be_true
         middlewares[2].called.should be_false
       end
@@ -72,10 +61,10 @@ describe Discord::Stack do
 
     it "accepts a block" do
       stack = Discord::Stack.new(TestMiddleware.new, TestMiddleware.new)
-      context = Discord::Context(Int32).new(Client, 1)
+      context = Discord::Context.new(Client)
 
       ran = false
-      stack.run(context) do |ctx|
+      stack.run(1, context) do |ctx|
         ran = true
       end
 

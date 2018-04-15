@@ -8,27 +8,29 @@
 # The text "%exception%" will be replaced with the exception's message if
 # provided. Alternatively, it can be initialized with a block for any other
 # custom behavior.
-class DiscordMiddleware::Error < Discord::Middleware
+class DiscordMiddleware::Error
+  include Discord::Middleware
+
   def initialize(message : String)
     @message = message
     @block = nil
   end
 
-  def initialize(&block : Discord::Context(Discord::Message) ->)
+  def initialize(&block : Discord::Message, Discord::Context ->)
     @message = nil
     @block = block
   end
 
-  def call(context : Discord::Context(Discord::Message), done)
-    done.call
+  def call(payload : Discord::Message, context : Discord::Context)
+    yield
   rescue ex
     if message = @message
-      channel_id = context.payload.channel_id
+      channel_id = payload.channel_id
       message = message.gsub("%exception%", ex.message)
       context.client.create_message(channel_id, message)
     end
 
-    @block.try &.call(context)
+    @block.try &.call(payload, context)
 
     raise ex
   end

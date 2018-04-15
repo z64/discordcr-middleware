@@ -6,11 +6,11 @@ module Discord
     macro stack_event(event_name, klass)
       # Creates a `Client#on_{{event_name}}` handler with a middleware chain and
       # trailing block. Handles a `{{klass}}` payload.
-      def on_{{event_name}}(*middleware, &block : Context({{klass}}) ->)
+      def on_{{event_name}}(*middleware, &block : {{klass}}, Context ->)
         stack = Stack.new(*middleware)
         on_{{event_name}} do |payload|
-          context = Discord::Context({{klass}}).new(self, payload)
-          stack.run(context, 0, &block)
+          context = Discord::Context.new(self)
+          stack.run(payload, context, 0, &block)
         end
       end
 
@@ -19,8 +19,8 @@ module Discord
       def on_{{event_name}}(*middleware)
         stack = Stack.new(*middleware)
         on_{{event_name}} do |payload|
-          context = Discord::Context({{klass}}).new(self, payload)
-          stack.run(context)
+          context = Discord::Context.new(self)
+          stack.run(payload, context)
         end
       end
     end

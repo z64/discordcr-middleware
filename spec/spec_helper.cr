@@ -1,6 +1,5 @@
 require "spec"
 require "../src/discordcr-middleware"
-require "../src/discordcr-middleware/middleware/*"
 
 Client = Discord::Client.new("Bot TOKEN")
 Cache  = Discord::Cache.new(Client)
@@ -32,26 +31,28 @@ def message(content = "", author_id = 0)
 end
 
 # Middleware that tracks if it was called, and how many times
-class FlagMiddleware < Discord::Middleware
+class FlagMiddleware
+  include Discord::Middleware
   getter called = false
 
   getter counter = 0
 
   getter message : Discord::Message?
 
-  def call(context : Discord::Context(Discord::Message), done)
+  def call(payload : Discord::Message, context)
     @called = true
     @counter += 1
-    @message = context.payload
-    done.call
+    @message = payload
+    yield
   end
 end
 
 # Middleware that will not call the next middleware
-class StopMiddleware < Discord::Middleware
+class StopMiddleware
+  include Discord::Middleware
   getter called = false
 
-  def call(context : Discord::Context(Discord::Message), done)
+  def call(payload : Discord::Message, context, &block)
     @called = true
   end
 end

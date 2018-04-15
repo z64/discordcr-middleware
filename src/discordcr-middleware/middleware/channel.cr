@@ -1,7 +1,8 @@
 # Matches the channel the message event was raised from based on
 # several different attributes. If the client has a cache enabled,
 # it will be used to resolve the channel the message came from.
-class DiscordMiddleware::Channel < Discord::Middleware
+class DiscordMiddleware::Channel
+  include Discord::Middleware
   include AttributeMiddleware
   include CachedRoutes
 
@@ -10,11 +11,9 @@ class DiscordMiddleware::Channel < Discord::Middleware
                  @guild_id : UInt64? = nil, @type : UInt8? = nil)
   end
 
-  def call(context : Discord::Context(Discord::Message), done)
-    ch = get_channel(context.client, context.payload.channel_id)
-
+  def call(payload : Discord::Message, context : Discord::Context)
+    ch = get_channel(context.client, payload.channel_id)
     check_attributes(ch)
-
-    done.call
+    yield
   end
 end

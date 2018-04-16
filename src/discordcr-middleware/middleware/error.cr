@@ -9,8 +9,6 @@
 # provided. Alternatively, it can be initialized with a block for any other
 # custom behavior.
 class DiscordMiddleware::Error
-  include Discord::Middleware
-
   def initialize(message : String)
     @message = message
     @block = nil

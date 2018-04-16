@@ -1,17 +1,4 @@
 module Discord
-  # A stage in a `Stack` when processing a message.
-  # To create custom middleware, inherit from this class and define a
-  # `def done(context, done)` method.
-  # The first argument is a `Context` that contains the invoking message
-  # and the client, as well as any additional properties you have added.
-  # To call the next middleware in the chain, call `done.call`. If you
-  # don't do this, the middleware stack will stop at that point.
-  module Middleware
-    abstract def call(context, payload, &block)
-  end
-
-  # A collection of `Middleware` that can be processed by
-  # passing a `Message` to `Stack#run`.
   class Stack(*T)
     @middlewares : T
 

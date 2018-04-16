@@ -17,7 +17,6 @@
 # end
 # ```
 class DiscordMiddleware::Permissions
-  include Discord::Middleware
   include DiscordMiddleware::CachedRoutes
 
   # The permissions a user has in a direct message

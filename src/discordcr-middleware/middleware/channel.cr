@@ -2,7 +2,6 @@
 # several different attributes. If the client has a cache enabled,
 # it will be used to resolve the channel the message came from.
 class DiscordMiddleware::Channel
-  include Discord::Middleware
   include AttributeMiddleware
   include CachedRoutes
 

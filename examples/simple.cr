@@ -3,8 +3,6 @@ require "../src/discordcr-middleware"
 # A basic middleware to cache the Channel and Guild from the invoking
 # message. The attached client can be accessed by `context.client`.
 class Cached
-  include Discord::Middleware
-
   getter! channel : Discord::Channel
   getter guild : Discord::Guild?
 
@@ -20,8 +18,6 @@ end
 
 # A basic, customizable prefix check
 class Prefix
-  include Discord::Middleware
-
   def initialize(@prefix : String)
   end
 
@@ -32,8 +28,6 @@ end
 
 # Responds to the channel with some basic information
 class Test
-  include Discord::Middleware
-
   def call(payload : Discord::Message, context : Discord::Context, &block)
     info = <<-DOC
     Channel: #{context[Cached].channel.name}

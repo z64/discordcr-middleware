@@ -2,8 +2,6 @@ require "../src/discordcr-middleware"
 require "../src/discordcr-middleware/middleware/prefix"
 
 class CachedEvent
-  include Discord::Middleware
-
   getter! channel : Discord::Channel
   getter guild : Discord::Guild?
   getter member : Discord::GuildMember?

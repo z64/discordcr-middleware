@@ -7,8 +7,6 @@
 # end
 # ```
 class DiscordMiddleware::Prefix
-  include Discord::Middleware
-
   def initialize(@prefix : String | Char)
   end
 

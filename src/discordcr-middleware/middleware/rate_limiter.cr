@@ -37,7 +37,6 @@ module DiscordMiddleware
   # end
   # ```
   class RateLimiter
-    include Discord::Middleware
     include DiscordMiddleware::CachedRoutes
 
     def initialize(@limiter : ::RateLimiter(UInt64), @bucket : Symbol,

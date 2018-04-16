@@ -7,8 +7,6 @@ require "../src/discordcr-middleware/middleware/prefix"
 # middleware, which responds with a heartfelt apology and passes the error up.
 
 class ErrorCatcher
-  include Discord::Middleware
-
   def call(payload, context)
     yield
   rescue ex

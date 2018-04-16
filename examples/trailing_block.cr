@@ -1,8 +1,6 @@
 require "../src/discordcr-middleware"
 
 class Prefix
-  include Discord::Middleware
-
   def initialize(@prefix : String)
   end
 

@@ -1,7 +1,6 @@
 require "./spec_helper"
 
 class TestMiddleware
-  include Discord::Middleware
   property called = false
 
   def call(payload : Int32, context)

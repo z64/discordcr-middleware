@@ -32,7 +32,6 @@ end
 
 # Middleware that tracks if it was called, and how many times
 class FlagMiddleware
-  include Discord::Middleware
   getter called = false
 
   getter counter = 0
@@ -49,7 +48,6 @@ end
 
 # Middleware that will not call the next middleware
 class StopMiddleware
-  include Discord::Middleware
   getter called = false
 
   def call(payload : Discord::Message, context, &block)

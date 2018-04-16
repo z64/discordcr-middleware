@@ -12,8 +12,6 @@
 # end
 # ```
 class DiscordMiddleware::Time
-  include Discord::Middleware
-
   def initialize(@delay : ::Time::Span, &block : Discord::Message, Discord::Context ->)
     @block = block
   end

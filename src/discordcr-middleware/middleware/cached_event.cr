@@ -17,7 +17,6 @@ module DiscordMiddleware
   # ```
   # If the cache is enabled on the client (recommended) it will be used.
   class CachedEvent
-    include Discord::Middleware
     include DiscordMiddleware::CachedRoutes
 
     getter! channel : Discord::Channel

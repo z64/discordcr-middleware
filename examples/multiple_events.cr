@@ -2,8 +2,6 @@ require "../discordcr-middleware"
 require "../discordcr-middleware/middleware/prefix"
 
 class TestMiddleware
-  include Discord::Middleware
-
   def call(payload : Discord::Message, context : Discord::Context)
     puts "MESSAGE_CREATE from #{payload.author.id}"
     yield

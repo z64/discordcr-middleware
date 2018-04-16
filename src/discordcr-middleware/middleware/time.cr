@@ -6,8 +6,8 @@
 #   context.client.create_message(channel_id, "I'm back!")
 # end
 #
-# client.on_message_create(delayed) do |context|
-#   channel_id = context.payload.channel_id
+# client.on_message_create(delayed) do |payload, context|
+#   channel_id = payload.channel_id
 #   context.client.create_message(channel_id, "Going away for 5 seconds..")
 # end
 # ```

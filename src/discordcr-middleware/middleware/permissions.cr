@@ -12,7 +12,9 @@
 # # handler
 # perms = Discord::Permissions::KickMembers
 #
-# client.on_message_create(PREFIX, DiscordMiddleware::Permissions.new(perms)) do |ctx|
+# client.on_message_create(
+#   DiscordMiddleware::Prefix.new("!kick"),
+#   DiscordMiddleware::Permissions.new(perms)) do |payload, context|
 #   # Kick 'em
 # end
 # ```

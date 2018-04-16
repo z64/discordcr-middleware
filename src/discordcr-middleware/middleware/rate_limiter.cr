@@ -32,7 +32,7 @@ module DiscordMiddleware
   #   "Slow down! Try again in %time%."
   # )
   #
-  # client.on_message_create(middleware) do |context|
+  # client.on_message_create(middleware) do |payload, context|
   #   # Post memes, but not too quickly per-channel
   # end
   # ```

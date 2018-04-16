@@ -1,5 +1,28 @@
 module Discord
-  # A container for shared state throughout processing of an event
+  # A `Context` instance is a container that can be used to store any kind of
+  # class to be later recalled:
+  # ```
+  # class Foo
+  #   getter value
+  #
+  #   def initialize(@value : Int32)
+  #   end
+  # end
+  #
+  # class Bar
+  #   getter value
+  #
+  #   def initialize(@value : String)
+  #   end
+  # end
+  #
+  # context = Context.new
+  # context.put Foo.new(1337)
+  # context.put Bar.new("discord")
+  #
+  # context[Foo].value # => 1337
+  # context[Bar].value # => "discord"
+  # ```
   class Context
     @extensions = Hash(Int32, Void*).new
 

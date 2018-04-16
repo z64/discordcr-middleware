@@ -1,8 +1,8 @@
 # Middleware that passes if the given message in the context starts with
 # a specified string.
 # ```
-# client.on_message_create(Prefix.new("!ping")) do |context|
-#   channel_id = context.payload.channel_id
+# client.on_message_create(Prefix.new("!ping")) do |payload|
+#   channel_id = payload.channel_id
 #   client.create_message(channel_id, "pong")
 # end
 # ```

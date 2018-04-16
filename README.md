@@ -1,7 +1,9 @@
 # discordcr-middleware
 
-An extension of [discordcr's](https://github.com/meew0/discordcr) `Client` that adds middleware functionality, similar to that of webserver libraries.
-The goal is provide a very customizable way to conditionally execute event handlers, and make great reuse of code and state between events.
+An extension of [discordcr's](https://github.com/meew0/discordcr) `Client` that
+adds middleware functionality, similar to that of webserver libraries. The goal
+is to provide a very customizable way to conditionally execute event handlers,
+and make great reuse of code and state between events.
 
 - [Documentation](https://z64.github.io/discordcr-middleware)
 
@@ -25,140 +27,111 @@ require "discordcr-middleware"
 
 ### Creating Middleware
 
-Custom middleware inherits from `Discord::Middleware` and implements `def call(context, done)`.
-```crystal
-class MyMiddleware < Discord::Middleware
-  def call(context : Discord::Context(Discord::Message), done)
-    # Do things with `context` here..
-    # ..
-    # Now call the next middleware in the chain:
-    done.call
-  end
-end
-```
-`context` is an instance of `Discord::Context(P)`, which contains a reference to your `Client` and the payload of type `P`, which in this case is the invoking `Message`.
-
-A custom middleware can be used for multiple kinds of events by adding multiple methods that restrict `context` to the specific payload type.
+Any class that implements `def call(payload, context, &block)` can be used as
+middleware:
 
 ```crystal
-class MyMiddleware < Discord::Middleware
-  def call(context : Discord::Context(Discord::Message), done)
-    # Handle Discord::Message payloads
-    done.call
-  end
-
-  def call(context : Discord::Context(Discord::Gateway::PresenceUpdatePayload), done)
-    # Handle Discord::Gateway::PresenceUpdatePayload payloads
-    done.call
+class Middleware
+  def call(payload, context)
+    # Do things with payload and context..
+    yield
   end
 end
 ```
 
-`done` represents the next middleware in the chain, which is grabbed and subsequently called lazily. **If you do not send `done.call`,** the rest of the middleware chain won't be executed. Use this to leverage flow control across the middleware chain.
-
-Currently, if you try to use a middleware on an event handler where the middleware does *not* have a matching `#call` method restricted appropriately, it will throw a runtime error.
-
-```cr
-# OK
-client.on_message_create(MyMiddleware.new)
-
-# OK
-client.on_presence_update(MyMiddleware.new)
-
-# Runtime error! :(
-client.on_guild_member_update(MyMiddleware.new)
-```
-
-You can also extend `Context` class and add more custom properties to be set and shared between middleware, just like you would a class with `property` and `property!`:
+`payload` is the `Discord` event payload that triggered the event handler. A
+middleware can be designed to handle multiple kinds of payloads by overloading
+`call` and restricting `payload` to different types:
 
 ```crystal
-# Add `Context#db_user`, with type `Database::UserModel?`
-Discord.add_ctx_property(db_user, Database::UserModel)
+class Middleware
+  def call(payload : Discord::Message, context)
+    # Do things with a message..
+    yield
+  end
 
-# Add `Context#db_user`, with type `Database::UserModel`
-# This performs a `not_nil!` assertion whenever you try to call it to guarantee the type to the compiler.
-# You are responsible for ensuring it will never be `nil`.
-Discord.add_ctx_property!(db_user, Database::UserModel)
+  def call(payload : Discord::Gateway::PresenceUpdatePayload, context)
+    # Do things with a presence update..
+    yield
+  end
+end
 ```
 
-And use it in some middleware:
+If you try to use a middleware class with an event that it doesn't support,
+this will result in a compile-time error.
+
+`context` is an instance of `Context`. This is a special class that allows
+you to store arbitrary `class` objects to be referenced later in the middleware
+chain. How the library handles `context` and how it should be used will be
+outlined in the next section, but in brief:
+
 ```crystal
-Discord.add_ctx_property!(db_user, Database::UserModel)
-
-class UserQuery < Discord::Middleware
-  def call(context : Discord::Context(Discord::Message), done)
-    author_id = context.message.author.id
-    user = Database::UserModel.find(discord_id: author_id)
-    context.db_user = user
-
-    # Only call the next middleware if the user was in our DB,
-    # otherwise send an error message
-    if user
-      done.call
-    else
-      channel_id = context.message.channel_id
-      context.client.create_message(channel_id, "User not found")
-    end
-  end
+class Foo
 end
+
+foo = Foo.new
+context.put(foo)
+context[Foo] == foo # => true
 ```
 
-`Middleware#initialize` is not defined, so you can define this to accept any arguments to customize the behavior of your middleware per-handler.
-```crystal
-class Prefix < Discord::Middleware
-  def initialize(@prefix : String)
-  end
+The `&block` passed to `call` is a block to be yielded to that
+determines whether or not middleware that follow should be executed.
 
-  def call(context : Discord::Context(Discord::Message), done)
-    # Only call the next middleware if the prefix matches:
-    done.call if context.message.content.starts_with?(@prefix)
-  end
-end
-
-client.on_message_create(Prefix.new("!")) do |context|
-  # Message started with "!"
-end
-
-client.on_message_create(Prefix.new("?")) do |context|
-  # Message started with "?"
-end
-```
+You can define an `#initialize` for your middleware that will let you configure
+how you want your middleware to behave for different event handlers, as opposed
+to creating another middleware class with extremely similar behavior.
 
 ### Usage with Client
 
-Middleware can be applied to any event handler in a few styles.
+Any event handler can have a middleware chain applied to it.
 
-With a block:
+The event handling process goes like this:
+
+1. The message event is received by the client
+2. An "empty" `Context` is initialized, and the receiving `Client` is added
+to it
+3. Each middleware in the chain is added to `Context`. This allows you to
+access the middleware that have run previously in the chain, either
+from inside one of the middleware or in the event handler itself.
+4. The event is passed through each middleware, providing that each one
+successfully `yield`s. If any middleware does not `yield`, execution
+of the rest of the chain will stop.
+
 ```crystal
-client.on_messgae_create(Prefix.new("!dbinfo"), UserQuery.new) do |context|
-  # Access our custom context property that our middleware set:
-  results = context.query_results
-
-  channel_id = context.message.channel_id
-
-  # Send back some info about our database row..
-  client.create_message(channel_id, results.to_s)
+client.on_message_create(MiddlewareA.new, MiddlewareB.new) do |payload, context|
+  payload # => Discord::Message
+  context # => Discord::Context
+  context[Discord::Client] == client # => true
+  context[MiddlewareA]               # => MiddlewareA
+  context[MiddlewareB]               # => MiddlewareB
 end
 ```
 
-As a pure middleware chain without a block:
+It's also worth noting you can share the same instance of a middleware between
+multiple event handlers:
+
+```crystal
+middleware = Middleware.new
+
+client.on_message_create(middleware) do |payload|
+  # ...
+end
+
+client.on_message_update(middleware) do |payload|
+  # ...
+end
+```
+
+This is useful, for example, for a middleware that has some kind of state that
+affects multiple handlers. You could have a single `Prefix` middleware instance
+that stores the client's prefix in memory, so that when you update the prefix,
+the runtime behavior on all of your handlers updates at once.
+
+The event handler block is also optional, making it possible to have
+pure-middleware chains:
+
 ```crystal
 client.on_message_create(MiddlewareA.new, MiddlewareB.new)
-```
-
-When the associated event is dispatched, it will be passed through each of your middleware sequentially, with the same `context` instance. If you supply a block, you can access that `context` instance that passed through your middleware, and the invoking payload is available as `context.payload`.
-
-Note, that if you do not pass *any* middleware, it is the same as the base event handler method. It will be passed the raw payload (*not* wrapped in a `Context`):
-
-```cr
-client.on_message_create(MyMiddleware.new) do |context|
-  context #=> Context(Discord::Message)
-  context.payload #=> Discord::Message
-end
-
-client.on_message_create do |payload|
-  payload #=> Discord::Message
-end
 ```
 
 ### [Additional Examples](https://github.com/z64/discordcr-middleware/tree/master/examples)

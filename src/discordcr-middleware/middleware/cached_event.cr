@@ -8,11 +8,14 @@ module DiscordMiddleware
   # - The member the message was from
   # - The member's roles
   # ```
-  # client.on_message_create(DiscordMiddleware::Prefix.new("!info"), DiscordMiddleware::CachedEvent.new) do |ctx|
-  #   ctx.channel      # => Channel
-  #   ctx.guild        # => Guild?
-  #   ctx.member       # => Member?
-  #   ctx.member_roles # => Array(Role)
+  # client.on_message_create(
+  #   DiscordMiddleware::Prefix.new("!info"),
+  #   DiscordMiddleware::CachedEvent.new) do |payload, context|
+  #   cached = context[DiscordMiddleware::CachedEvent]
+  #   cached.channel      # => Channel
+  #   cached.guild        # => Guild?
+  #   cached.member       # => Member?
+  #   cached.member_roles # => Array(Role)
   # end
   # ```
   # If the cache is enabled on the client (recommended) it will be used.

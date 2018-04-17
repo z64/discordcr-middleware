@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.4.0
+
+This release accomplishes a small redesign of `Stack` and `Context`  that makes the library simpler and more powerful for end users.
+
+- `Discord::Middleware` has been removed
+- `Discord.add_ctx_property` / `Discord.add_ctx_property!` has been removed
+- Middleware can now be *any* class that implements `def call(payload, context, &block)`
+- The middleware chain is advanced by `yield`-ing to the block passed to `call`
+- `Context` is reimplemented as a table of references
+- The client the middleware was registered on can be accessed as `context[Discord::Client]`
+- Each middleware in a chain is made available on `context`, i.e. `context[MyMiddleware]`
+
+Big thanks to @RX14 for the recommendations and code examples that were the foundation of these changes.
+
+See the updated `README.md` and documentation for more details.
+
 ## v0.3.1
 
 Fixes a bug where stacks were registered across event handlers incorrectly, causing events to be distributed wrongly

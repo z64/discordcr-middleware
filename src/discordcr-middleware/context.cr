@@ -28,7 +28,11 @@ module Discord
 
     # Access a stored value by class
     def [](clazz : T.class) : T forall T
-      @extensions[clazz.crystal_type_id].unsafe_as(T)
+      if reference = @extensions[clazz.crystal_type_id]?
+        reference.unsafe_as(T)
+      else
+        raise KeyError.new("Missing reference in context to #{T}")
+      end
     end
 
     # Store an object in this class. The object must be a `class`.

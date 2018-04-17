@@ -16,7 +16,7 @@ describe Discord::Context do
 
   it "raises on a type that hasn't been stored" do
     context = Discord::Context.new
-    expect_raises(Exception) do
+    expect_raises(KeyError, "Missing reference in context to Storage") do
       context[Storage]
     end
   end

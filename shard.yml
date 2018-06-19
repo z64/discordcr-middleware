@@ -6,7 +6,7 @@ authors:
 
 dependencies:
   discordcr:
-    github: z64/discordcr
+    github: meew0/discordcr
     branch: master
   rate_limiter:
     github: z64/rate_limiter

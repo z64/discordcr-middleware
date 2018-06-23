@@ -3,7 +3,7 @@ require "../../src/discordcr-middleware/middleware/cached_routes"
 require "../../src/discordcr-middleware/middleware/rate_limiter"
 
 describe DiscordMiddleware::RateLimiter do
-  limiter = RateLimiter(UInt64).new
+  limiter = RateLimiter(Discord::Snowflake).new
   limiter.bucket(:foo, 1_u32, 1.seconds)
 
   describe "#call" do

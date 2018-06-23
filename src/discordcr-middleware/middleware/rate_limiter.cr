@@ -39,7 +39,7 @@ module DiscordMiddleware
   class RateLimiter
     include DiscordMiddleware::CachedRoutes
 
-    def initialize(@limiter : ::RateLimiter(UInt64), @bucket : Symbol,
+    def initialize(@limiter : ::RateLimiter(Discord::Snowflake), @bucket : Symbol,
                    @key : RateLimiterKey = RateLimiterKey::UserID,
                    @message : String? = nil)
     end

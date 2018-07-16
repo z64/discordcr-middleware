@@ -5,7 +5,7 @@ module DiscordMiddleware::AttributeMiddleware
     {% for var in @type.instance_vars %}
       if attr = {{object}}.{{var.id}}
         if value = @{{var.id}}
-          return unless value == attr
+          return unless attr == value
         end
       end
     {% end %}

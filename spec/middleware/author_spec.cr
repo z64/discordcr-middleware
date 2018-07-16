@@ -16,7 +16,7 @@ describe DiscordMiddleware::Author do
   describe "#call" do
     context "with a matching author" do
       it "calls the next middleware" do
-        mw = DiscordMiddleware::Author.new(username: "z64")
+        mw = DiscordMiddleware::Author.new(id: 0, username: "z64")
         context = Discord::Context.new
 
         mw.call(message, context) { true }.should be_true

@@ -7,6 +7,10 @@
 # If the client has a cache enabled, it will be used to fetch the guild
 # and channel.
 #
+# It can be initialized with a string that will be used as a canned response.
+# The text "%permissions%" will be replaced with the permissions if
+# provided.
+#
 # ```
 # # Require that a user has permission to kick members to trigger this
 # # handler
@@ -14,7 +18,7 @@
 #
 # client.on_message_create(
 #   DiscordMiddleware::Prefix.new("!kick"),
-#   DiscordMiddleware::Permissions.new(perms)) do |payload, context|
+#   DiscordMiddleware::Permissions.new(perms, "Permission Denied. Must have %permissions%")) do |payload, context|
 #   # Kick 'em
 # end
 # ```
@@ -38,7 +42,7 @@ class DiscordMiddleware::Permissions
     UseVAD
   )
 
-  def initialize(@permissions : Discord::Permissions)
+  def initialize(@permissions : Discord::Permissions, @permission_denied_message : String? = nil)
   end
 
   # Returns the member's base permissions on the guild
@@ -103,20 +107,24 @@ class DiscordMiddleware::Permissions
       guild = get_guild(client, guild_id)
 
       # Pass if the user is the owner of the guild
-      yield if guild.owner_id == user_id
+      return yield if guild.owner_id == user_id
 
       member = get_member(client, guild_id, user_id)
       permissions = base_permissions_for(member, in: guild)
 
       # Pass if user has an administrator role
-      yield if permissions.administrator?
+      return yield if permissions.administrator?
 
       # Evaluate channel overwrites
       overwrites = overwrites_for(member, in: channel, with: permissions)
 
-      yield if (@permissions & overwrites) == @permissions
+      return yield if (@permissions & overwrites) == @permissions
     else
-      yield if (@permissions & DM_PERMISSIONS) == @permissions
+      return yield if (@permissions & DM_PERMISSIONS) == @permissions
+    end
+    if msg = @permission_denied_message
+      msg = msg.gsub("%permissions%", @permissions)
+      client.create_message(payload.channel_id, msg)
     end
   end
 end

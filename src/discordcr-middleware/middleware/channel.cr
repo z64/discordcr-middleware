@@ -9,7 +9,7 @@ class DiscordMiddleware::Channel
 
   def initialize(@id : UInt64? = nil, @name : String? = nil,
                  @topic : String? = nil, @nsfw : Bool? = nil,
-                 @guild_id : UInt64? = nil, @type : UInt8? = nil)
+                 @guild_id : UInt64? = nil, @type : Discord::ChannelType? = nil)
   end
 
   def call(payload : Discord::Message, context : Discord::Context)

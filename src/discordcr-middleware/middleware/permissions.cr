@@ -8,7 +8,7 @@
 # and channel.
 #
 # It can be initialized with a string that will be used as a canned response.
-# The text "%permissions%" will be replaced with the permissions if
+# The text "%permissions%" will be replaced with the *required* permissions if
 # provided.
 #
 # ```
@@ -122,6 +122,7 @@ class DiscordMiddleware::Permissions
     else
       return yield if (@permissions & DM_PERMISSIONS) == @permissions
     end
+
     if msg = @permission_denied_message
       msg = msg.gsub("%permissions%", @permissions)
       client.create_message(payload.channel_id, msg)

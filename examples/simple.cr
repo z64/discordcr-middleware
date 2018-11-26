@@ -3,15 +3,25 @@ require "../src/discordcr-middleware"
 # A basic middleware to cache the Channel and Guild from the invoking
 # message. The attached client can be accessed by `context.client`.
 class Cached
-  getter! channel : Discord::Channel
-  getter guild : Discord::Guild?
+  class Result
+    getter channel : Discord::Channel
+    getter guild : Discord::Guild?
+
+    def initialize(@channel : Discord::Channel, @guild : Discord::Guild? = nil)
+    end
+  end
 
   def call(payload : Discord::Message, context : Discord::Context)
     client = context[Discord::Client]
-    @channel = channel = client.get_channel(payload.channel_id)
+    channel = client.get_channel(payload.channel_id)
+
     if id = channel.guild_id
-      @guild = client.get_guild(id)
+      guild = client.get_guild(id)
+      context.put(Result.new(channel, guild))
+    else
+      context.put(Result.new(channel))
     end
+
     yield
   end
 end
@@ -30,8 +40,8 @@ end
 class Test
   def call(payload : Discord::Message, context : Discord::Context, &block)
     info = <<-DOC
-    Channel: #{context[Cached].channel.name}
-    Guild: #{context[Cached].guild.try &.name}
+    Channel: #{context[Cached::Result].channel.name}
+    Guild: #{context[Cached::Result].guild.try &.name}
     DOC
 
     context[Discord::Client].create_message(payload.channel_id, info)

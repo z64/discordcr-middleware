@@ -20,9 +20,10 @@ describe DiscordMiddleware::CachedEvent do
     context.put(Client)
 
     mw.call(message(author_id: 120571255635181568), context) { true }
-    mw.channel.should eq channel
-    mw.guild.should eq guild
-    mw.member.should eq member
-    mw.member_roles.map(&.id).should eq member.roles
+    result = context[DiscordMiddleware::CachedEvent::Result]
+    result.channel.should eq channel
+    result.guild.should eq guild
+    result.member.should eq member
+    result.member_roles.try(&.map(&.id)).should eq member.roles
   end
 end

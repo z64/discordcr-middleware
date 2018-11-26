@@ -1,3 +1,5 @@
+require "./attribute"
+
 # Matches the author the message event was raised with based
 # on several different attributes.
 class DiscordMiddleware::Author

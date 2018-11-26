@@ -1,3 +1,5 @@
+require "./attribute"
+
 # Matches the channel the message event was raised from based on
 # several different attributes. If the client has a cache enabled,
 # it will be used to resolve the channel the message came from.

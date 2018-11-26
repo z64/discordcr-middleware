@@ -1,5 +1,4 @@
 require "../spec_helper"
-require "../../src/discordcr-middleware/middleware/attribute"
 require "../../src/discordcr-middleware/middleware/cached_event"
 require "../../src/discordcr-middleware/middleware/channel"
 

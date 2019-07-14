@@ -1,5 +1,5 @@
-require "../discordcr-middleware"
-require "../discordcr-middleware/middleware/prefix"
+require "../src/discordcr-middleware"
+require "../src/discordcr-middleware/middleware/prefix"
 
 class TestMiddleware
   def call(payload : Discord::Message, context : Discord::Context)

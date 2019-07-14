@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.29.0">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="github.com/z64/discordcr-middleware">
+  <title>Discord::Stack(*T) - github.com/z64/discordcr-middleware</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/z64/discordcr-middleware/Discord" data-name="discord">
+      <a href="../Discord.html">Discord</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/Discord/Client" data-name="discord::client">
+      <a href="../Discord/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/Discord/Context" data-name="discord::context">
+      <a href="../Discord/Context.html">Context</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/z64/discordcr-middleware/Discord/Stack" data-name="discord::stack(*t)">
+      <a href="../Discord/Stack.html">Stack</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware" data-name="discordmiddleware">
+      <a href="../DiscordMiddleware.html">DiscordMiddleware</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/AttributeMiddleware" data-name="discordmiddleware::attributemiddleware">
+      <a href="../DiscordMiddleware/AttributeMiddleware.html">AttributeMiddleware</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Author" data-name="discordmiddleware::author">
+      <a href="../DiscordMiddleware/Author.html">Author</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedEvent" data-name="discordmiddleware::cachedevent">
+      <a href="../DiscordMiddleware/CachedEvent.html">CachedEvent</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedEvent/Result" data-name="discordmiddleware::cachedevent::result">
+      <a href="../DiscordMiddleware/CachedEvent/Result.html">Result</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedRoutes" data-name="discordmiddleware::cachedroutes">
+      <a href="../DiscordMiddleware/CachedRoutes.html">CachedRoutes</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Channel" data-name="discordmiddleware::channel">
+      <a href="../DiscordMiddleware/Channel.html">Channel</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Conditional" data-name="discordmiddleware::conditional">
+      <a href="../DiscordMiddleware/Conditional.html">Conditional</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Error" data-name="discordmiddleware::error">
+      <a href="../DiscordMiddleware/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Permissions" data-name="discordmiddleware::permissions">
+      <a href="../DiscordMiddleware/Permissions.html">Permissions</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Prefix" data-name="discordmiddleware::prefix">
+      <a href="../DiscordMiddleware/Prefix.html">Prefix</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/RateLimiter" data-name="discordmiddleware::ratelimiter">
+      <a href="../DiscordMiddleware/RateLimiter.html">RateLimiter</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/RateLimiterKey" data-name="discordmiddleware::ratelimiterkey">
+      <a href="../DiscordMiddleware/RateLimiterKey.html">RateLimiterKey</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Time" data-name="discordmiddleware::time">
+      <a href="../DiscordMiddleware/Time.html">Time</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Discord::Stack(*T)
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Discord/Stack.html">Discord::Stack(*T)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>A <code><a href="../Discord/Stack.html">Stack</a></code> is a generic container for a chain of middleware.</p>
+
+<p>A middleware can be <em>any</em> class that implements
+<code>def call(payload, context, &block)</code>.</p>
+
+<p>When <code><a href="../Discord/Stack.html#run%28payload%3AU%2Ccontext%3AContext%3DContext.new%2Cindex%3D0%2C%26block%3AU%2CContext-%3E%29forallU-instance-method">#run</a></code> is passed a payload, it is passed into the first middleware. If
+any middleware in the chain does not <code>yield</code>, execution of the rest of the
+chain will stop.</p>
+
+<p><code><a href="../Discord/Stack.html#run%28payload%3AU%2Ccontext%3AContext%3DContext.new%2Cindex%3D0%2C%26block%3AU%2CContext-%3E%29forallU-instance-method">#run</a></code> can also be invoked with a block that also accepts the payload and
+<code><a href="../Discord/Context.html">Context</a></code>, which will be called after all middleware successfully run.</p>
+
+<pre><code><span class="k">class</span> <span class="t">Middleware</span>
+  <span class="k">def</span> <span class="m">call</span>(payload, context)
+    <span class="c"># Make this middleware available in context for later</span>
+    context.put <span class="k">self</span>
+
+    <span class="c"># Do some checks against payload</span>
+    even <span class="o">=</span> (payload <span class="o">%</span> <span class="n">2</span>).zero?
+
+    <span class="c"># Store some things in context</span>
+    context.put payload <span class="o">*</span> <span class="n">2</span>
+
+    <span class="k">yield</span> <span class="k">if</span> even
+  <span class="k">end</span>
+<span class="k">end</span>
+
+stack <span class="o">=</span> <span class="t">Stack</span>.<span class="k">new</span>(<span class="t">Middleware</span>.<span class="k">new</span>)
+stack.run(<span class="n">2</span>) <span class="k">do</span> <span class="o">|</span>payload, context<span class="o">|</span>
+  payload             <span class="c"># =&gt; 2</span>
+  context[<span class="t">Middleware</span>] <span class="c"># =&gt; 4</span>
+<span class="k">end</span>
+
+stack.run(<span class="n">1</span>) <span class="k">do</span> <span class="o">|</span>payload, context<span class="o">|</span>
+  <span class="c"># Code here is never run!</span>
+<span class="k">end</span></code></pre>
+
+<p><span class="flag purple">NOTE</span>  While you can implement <code><a href="../Discord/Stack.html">Stack</a></code> yourself, it is already implemented
+internally around the <code><a href="../Discord/Client.html">Client</a></code> handler methods. The above example is shown
+for completeness.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware/stack.cr#L44" target="_blank">
+        discordcr-middleware/stack.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28%2Amiddlewares%3A%2AT%29-class-method" class="signature"><strong>.new</strong>(*middlewares : <span class="o">*</span><span class="t">T</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#run%28payload%3AU%2Ccontext%3AContext%3DContext.new%2Cindex%3D0%2C%26block%3AU%2CContext-%3E%29forallU-instance-method" class="signature"><strong>#run</strong>(payload : U, context : Context = <span class="t">Context</span>.<span class="k">new</span>, index = <span class="n">0</span>, &block : U, Context -> ) forall U</a>
+        
+          <div class="summary"><p>Runs a message through this middleware stack, with a trailing block</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#run%28payload%3AU%2Ccontext%3ADiscord%3A%3AContext%3DContext.new%2Cindex%3D0%29forallU-instance-method" class="signature"><strong>#run</strong>(payload : U, context : Discord::Context = <span class="t">Context</span>.<span class="k">new</span>, index = <span class="n">0</span>) forall U</a>
+        
+          <div class="summary"><p>Runs a message through this middleware stack</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(*middlewares:*T)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(*middlewares : <span class="o">*</span><span class="t">T</span>)
+
+        <a class="method-permalink" href="#new%28%2Amiddlewares%3A%2AT%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware/stack.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="run(payload:U,context:Context=Context.new,index=0,&amp;block:U,Context-&gt;)forallU-instance-method">
+      <div class="signature">
+        
+        def <strong>run</strong>(payload : U, context : <a href="../Discord/Context.html">Context</a> = <span class="t">Context</span>.<span class="k">new</span>, index = <span class="n">0</span>, &block : U, <a href="../Discord/Context.html">Context</a> -> ) forall U
+
+        <a class="method-permalink" href="#run%28payload%3AU%2Ccontext%3AContext%3DContext.new%2Cindex%3D0%2C%26block%3AU%2CContext-%3E%29forallU-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Runs a message through this middleware stack, with a trailing block</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware/stack.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="run(payload:U,context:Discord::Context=Context.new,index=0)forallU-instance-method">
+      <div class="signature">
+        
+        def <strong>run</strong>(payload : U, context : <a href="../Discord/Context.html">Discord::Context</a> = <span class="t">Context</span>.<span class="k">new</span>, index = <span class="n">0</span>) forall U
+
+        <a class="method-permalink" href="#run%28payload%3AU%2Ccontext%3ADiscord%3A%3AContext%3DContext.new%2Cindex%3D0%29forallU-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Runs a message through this middleware stack</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware/stack.cr#L62" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.29.0">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="github.com/z64/discordcr-middleware">
+  <title>DiscordMiddleware::CachedEvent - github.com/z64/discordcr-middleware</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="github.com/z64/discordcr-middleware/Discord" data-name="discord">
+      <a href="../Discord.html">Discord</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/Discord/Client" data-name="discord::client">
+      <a href="../Discord/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/Discord/Context" data-name="discord::context">
+      <a href="../Discord/Context.html">Context</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/Discord/Stack" data-name="discord::stack(*t)">
+      <a href="../Discord/Stack.html">Stack</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/z64/discordcr-middleware/DiscordMiddleware" data-name="discordmiddleware">
+      <a href="../DiscordMiddleware.html">DiscordMiddleware</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/AttributeMiddleware" data-name="discordmiddleware::attributemiddleware">
+      <a href="../DiscordMiddleware/AttributeMiddleware.html">AttributeMiddleware</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Author" data-name="discordmiddleware::author">
+      <a href="../DiscordMiddleware/Author.html">Author</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedEvent" data-name="discordmiddleware::cachedevent">
+      <a href="../DiscordMiddleware/CachedEvent.html">CachedEvent</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedEvent/Result" data-name="discordmiddleware::cachedevent::result">
+      <a href="../DiscordMiddleware/CachedEvent/Result.html">Result</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedRoutes" data-name="discordmiddleware::cachedroutes">
+      <a href="../DiscordMiddleware/CachedRoutes.html">CachedRoutes</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Channel" data-name="discordmiddleware::channel">
+      <a href="../DiscordMiddleware/Channel.html">Channel</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Conditional" data-name="discordmiddleware::conditional">
+      <a href="../DiscordMiddleware/Conditional.html">Conditional</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Error" data-name="discordmiddleware::error">
+      <a href="../DiscordMiddleware/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Permissions" data-name="discordmiddleware::permissions">
+      <a href="../DiscordMiddleware/Permissions.html">Permissions</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Prefix" data-name="discordmiddleware::prefix">
+      <a href="../DiscordMiddleware/Prefix.html">Prefix</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/RateLimiter" data-name="discordmiddleware::ratelimiter">
+      <a href="../DiscordMiddleware/RateLimiter.html">RateLimiter</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/RateLimiterKey" data-name="discordmiddleware::ratelimiterkey">
+      <a href="../DiscordMiddleware/RateLimiterKey.html">RateLimiterKey</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Time" data-name="discordmiddleware::time">
+      <a href="../DiscordMiddleware/Time.html">Time</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> DiscordMiddleware::CachedEvent
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../DiscordMiddleware/CachedEvent.html">DiscordMiddleware::CachedEvent</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>When a message is passed through this middleware, it caches several
+common properties one might make for typical commands:</p>
+
+<ul><li>The channel the message was from</li><li>The guild the message was from</li><li>The member the message was from</li><li>The member's roles</li></ul>
+
+<pre><code>client.on_message_create(
+  <span class="t">DiscordMiddleware</span><span class="t">::</span><span class="t">Prefix</span>.<span class="k">new</span>(<span class="s">&quot;!info&quot;</span>),
+  <span class="t">DiscordMiddleware</span><span class="t">::</span><span class="t">CachedEvent</span>.<span class="k">new</span>) <span class="k">do</span> <span class="o">|</span>payload, context<span class="o">|</span>
+  cached <span class="o">=</span> context[<span class="t">DiscordMiddleware</span><span class="t">::</span><span class="t">CachedEvent</span><span class="t">::</span><span class="t">Result</span>]
+  cached.channel      <span class="c"># =&gt; Channel</span>
+  cached.guild        <span class="c"># =&gt; Guild?</span>
+  cached.member       <span class="c"># =&gt; Member?</span>
+  cached.member_roles <span class="c"># =&gt; Array(Role)?</span>
+<span class="k">end</span></code></pre>
+
+<p>If the cache is enabled on the client (recommended) it will be used.</p>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../DiscordMiddleware/CachedRoutes.html">DiscordMiddleware::CachedRoutes</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware/middleware/cached_event.cr#L22" target="_blank">
+        discordcr-middleware/middleware/cached_event.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#call%28payload%3ADiscord%3A%3AMessage%2Ccontext%3ADiscord%3A%3AContext%2C%26block%29-instance-method" class="signature"><strong>#call</strong>(payload : Discord::Message, context : Discord::Context, &block)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="call(payload:Discord::Message,context:Discord::Context,&amp;block)-instance-method">
+      <div class="signature">
+        
+        def <strong>call</strong>(payload : Discord::Message, context : <a href="../Discord/Context.html">Discord::Context</a>, &block)
+
+        <a class="method-permalink" href="#call%28payload%3ADiscord%3A%3AMessage%2Ccontext%3ADiscord%3A%3AContext%2C%26block%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware/middleware/cached_event.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

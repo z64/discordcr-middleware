@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.29.0">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "";
+</script>
+
+  <meta id="repository-name" content="github.com/z64/discordcr-middleware">
+  <title>README - github.com/z64/discordcr-middleware</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="github.com/z64/discordcr-middleware/Discord" data-name="discord">
+      <a href="Discord.html">Discord</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/Discord/Client" data-name="discord::client">
+      <a href="Discord/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/Discord/Context" data-name="discord::context">
+      <a href="Discord/Context.html">Context</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/Discord/Stack" data-name="discord::stack(*t)">
+      <a href="Discord/Stack.html">Stack</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware" data-name="discordmiddleware">
+      <a href="DiscordMiddleware.html">DiscordMiddleware</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/AttributeMiddleware" data-name="discordmiddleware::attributemiddleware">
+      <a href="DiscordMiddleware/AttributeMiddleware.html">AttributeMiddleware</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Author" data-name="discordmiddleware::author">
+      <a href="DiscordMiddleware/Author.html">Author</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedEvent" data-name="discordmiddleware::cachedevent">
+      <a href="DiscordMiddleware/CachedEvent.html">CachedEvent</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedEvent/Result" data-name="discordmiddleware::cachedevent::result">
+      <a href="DiscordMiddleware/CachedEvent/Result.html">Result</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedRoutes" data-name="discordmiddleware::cachedroutes">
+      <a href="DiscordMiddleware/CachedRoutes.html">CachedRoutes</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Channel" data-name="discordmiddleware::channel">
+      <a href="DiscordMiddleware/Channel.html">Channel</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Conditional" data-name="discordmiddleware::conditional">
+      <a href="DiscordMiddleware/Conditional.html">Conditional</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Error" data-name="discordmiddleware::error">
+      <a href="DiscordMiddleware/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Permissions" data-name="discordmiddleware::permissions">
+      <a href="DiscordMiddleware/Permissions.html">Permissions</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Prefix" data-name="discordmiddleware::prefix">
+      <a href="DiscordMiddleware/Prefix.html">Prefix</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/RateLimiter" data-name="discordmiddleware::ratelimiter">
+      <a href="DiscordMiddleware/RateLimiter.html">RateLimiter</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/RateLimiterKey" data-name="discordmiddleware::ratelimiterkey">
+      <a href="DiscordMiddleware/RateLimiterKey.html">RateLimiterKey</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Time" data-name="discordmiddleware::time">
+      <a href="DiscordMiddleware/Time.html">Time</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1>discordcr-middleware</h1>
+
+<p>An extension of <a href="https://github.com/meew0/discordcr" target="_blank">discordcr's</a> <code>Client</code> that
+adds middleware functionality, similar to that of webserver libraries. The goal
+is to provide a very customizable way to conditionally execute event handlers,
+and make great reuse of code and state between events.</p>
+
+<ul><li><a href="https://z64.github.io/discordcr-middleware" target="_blank">Documentation</a></li></ul>
+
+<h2>Deprecation notice</h2>
+
+<p>The functionality provided by this shard is now built into discordcr. It
+<strong>should not</strong> be used, as it would duplicate a bunch of code.</p>
+
+<p>Eventually this repo will be reorganized to host <em>only</em> the stock middleware.
+If you still want to use them, you can just specifically require them instead
+of requiring the entire extension.</p>
+
+<h2>Installation</h2>
+
+<p>Add this to your application's <code>shard.yml</code>:</p>
+
+<pre><code class="language-yaml">dependencies:
+  discordcr-middleware:
+    github: z64/discordcr-middleware</code></pre>
+
+<h2>Usage</h2>
+
+<p>Require the extension:</p>
+
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;discordcr-middleware&quot;</span>
+</code></pre>
+
+<h3>Creating Middleware</h3>
+
+<p>Any class that implements <code>def call(payload, context, &block)</code> can be used as
+middleware:</p>
+
+<pre><code class="language-crystal"><span class="k">class</span> <span class="t">Middleware</span>
+  <span class="k">def</span> <span class="m">call</span>(payload, context)
+    <span class="c"># Do things with payload and context..</span>
+    <span class="k">yield</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p><code>payload</code> is the <code><a href="Discord.html">Discord</a></code> event payload that triggered the event handler. A
+middleware can be designed to handle multiple kinds of payloads by overloading
+<code>call</code> and restricting <code>payload</code> to different types:</p>
+
+<pre><code class="language-crystal"><span class="k">class</span> <span class="t">Middleware</span>
+  <span class="k">def</span> <span class="m">call</span>(payload : <span class="t">Discord</span><span class="t">::</span><span class="t">Message</span>, context)
+    <span class="c"># Do things with a message..</span>
+    <span class="k">yield</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="m">call</span>(payload : <span class="t">Discord</span><span class="t">::</span><span class="t">Gateway</span><span class="t">::</span><span class="t">PresenceUpdatePayload</span>, context)
+    <span class="c"># Do things with a presence update..</span>
+    <span class="k">yield</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+<p>If you try to use a middleware class with an event that it doesn't support,
+this will result in a compile-time error.</p>
+
+<p><code>context</code> is an instance of <code>Context</code>. This is a special class that allows
+you to store arbitrary <code>class</code> objects to be referenced later in the middleware
+chain. How the library handles <code>context</code> and how it should be used will be
+outlined in the next section, but in brief:</p>
+
+<pre><code class="language-crystal"><span class="k">class</span> <span class="t">Foo</span>
+<span class="k">end</span>
+
+foo <span class="o">=</span> <span class="t">Foo</span>.<span class="k">new</span>
+context.put(foo)
+context[<span class="t">Foo</span>] <span class="o">==</span> foo <span class="c"># =&gt; true</span></code></pre>
+
+<p>The <code>&block</code> passed to <code>call</code> is a block to be yielded to that
+determines whether or not middleware that follow should be executed.</p>
+
+<p>You can define an <code>#initialize</code> for your middleware that will let you configure
+how you want your middleware to behave for different event handlers, as opposed
+to creating another middleware class with extremely similar behavior.</p>
+
+<h3>Usage with Client</h3>
+
+<p>Any event handler can have a middleware chain applied to it.</p>
+
+<p>The event handling process goes like this:</p>
+
+<ol><li>The message event is received by the client</li><li>An "empty" <code>Context</code> is initialized, and the receiving <code>Client</code> is added
+to it</li><li>Each middleware in the chain is added to <code>Context</code>. This allows you to
+access the middleware that have run previously in the chain, either
+from inside one of the middleware or in the event handler itself.</li><li>The event is passed through each middleware, providing that each one
+successfully <code>yield</code>s. If any middleware does not <code>yield</code>, execution
+of the rest of the chain will stop.</li></ol>
+
+<pre><code class="language-crystal">client.on_message_create(<span class="t">MiddlewareA</span>.<span class="k">new</span>, <span class="t">MiddlewareB</span>.<span class="k">new</span>) <span class="k">do</span> <span class="o">|</span>payload, context<span class="o">|</span>
+  payload <span class="c"># =&gt; Discord::Message</span>
+  context <span class="c"># =&gt; Discord::Context</span>
+  context[<span class="t">Discord</span><span class="t">::</span><span class="t">Client</span>] <span class="o">==</span> client <span class="c"># =&gt; true</span>
+  context[<span class="t">MiddlewareA</span>]               <span class="c"># =&gt; MiddlewareA</span>
+  context[<span class="t">MiddlewareB</span>]               <span class="c"># =&gt; MiddlewareB</span>
+<span class="k">end</span></code></pre>
+
+<p>It's also worth noting you can share the same instance of a middleware between
+multiple event handlers:</p>
+
+<pre><code class="language-crystal">middleware <span class="o">=</span> <span class="t">Middleware</span>.<span class="k">new</span>
+
+client.on_message_create(middleware) <span class="k">do</span> <span class="o">|</span>payload<span class="o">|</span>
+  <span class="c"># ...</span>
+<span class="k">end</span>
+
+client.on_message_update(middleware) <span class="k">do</span> <span class="o">|</span>payload<span class="o">|</span>
+  <span class="c"># ...</span>
+<span class="k">end</span></code></pre>
+
+<p>This is useful, for example, for a middleware that has some kind of state that
+affects multiple handlers. You could have a single <code>Prefix</code> middleware instance
+that stores the client's prefix in memory, so that when you update the prefix,
+the runtime behavior on all of your handlers updates at once.</p>
+
+<p>The event handler block is also optional, making it possible to have
+pure-middleware chains:</p>
+
+<pre><code class="language-crystal">client.on_message_create(<span class="t">MiddlewareA</span>.<span class="k">new</span>, <span class="t">MiddlewareB</span>.<span class="k">new</span>)</code></pre>
+
+<h3><a href="https://github.com/z64/discordcr-middleware/tree/master/examples" target="_blank">Additional Examples</a></h3>
+
+<h2>Stock Middleware</h2>
+
+<p>A collection of basic, common use-case middleware are provided in <a href="src/discordcr-middleware/middleware" target="_blank"><code>discordcr-middleware/middleware</code></a>.</p>
+
+<p>Require them explicitly to make use of them:</p>
+
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;discordcr-middleware/middleware/prefix&quot;</span>
+
+<span class="t">DiscordMiddleware</span><span class="t">::</span><span class="t">Prefix</span>.<span class="k">new</span>(<span class="s">&quot;!help&quot;</span>)</code></pre>
+
+<h2>Contributors</h2>
+
+<ul><li><a href="https://github.com/z64" target="_blank">z64</a>  - creator, maintainer</li></ul>
+
+<p><em>Inspired by the <a href="https://razecr.com/" target="_blank">raze</a> web framework and its <a href="https://razecr.com/docs/middlewares" target="_blank">middleware system</a>.</em></p>
+</div>
+</body>
+</html>

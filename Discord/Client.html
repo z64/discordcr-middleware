@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.29.0">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../js/doc.js"></script>
+<script type="text/javascript">
+  CrystalDoc.base_path = "../";
+</script>
+
+  <meta id="repository-name" content="github.com/z64/discordcr-middleware">
+  <title>Discord::Client - github.com/z64/discordcr-middleware</title>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/z64/discordcr-middleware/Discord" data-name="discord">
+      <a href="../Discord.html">Discord</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="github.com/z64/discordcr-middleware/Discord/Client" data-name="discord::client">
+      <a href="../Discord/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/Discord/Context" data-name="discord::context">
+      <a href="../Discord/Context.html">Context</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/Discord/Stack" data-name="discord::stack(*t)">
+      <a href="../Discord/Stack.html">Stack</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware" data-name="discordmiddleware">
+      <a href="../DiscordMiddleware.html">DiscordMiddleware</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/AttributeMiddleware" data-name="discordmiddleware::attributemiddleware">
+      <a href="../DiscordMiddleware/AttributeMiddleware.html">AttributeMiddleware</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Author" data-name="discordmiddleware::author">
+      <a href="../DiscordMiddleware/Author.html">Author</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedEvent" data-name="discordmiddleware::cachedevent">
+      <a href="../DiscordMiddleware/CachedEvent.html">CachedEvent</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedEvent/Result" data-name="discordmiddleware::cachedevent::result">
+      <a href="../DiscordMiddleware/CachedEvent/Result.html">Result</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/CachedRoutes" data-name="discordmiddleware::cachedroutes">
+      <a href="../DiscordMiddleware/CachedRoutes.html">CachedRoutes</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Channel" data-name="discordmiddleware::channel">
+      <a href="../DiscordMiddleware/Channel.html">Channel</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Conditional" data-name="discordmiddleware::conditional">
+      <a href="../DiscordMiddleware/Conditional.html">Conditional</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Error" data-name="discordmiddleware::error">
+      <a href="../DiscordMiddleware/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Permissions" data-name="discordmiddleware::permissions">
+      <a href="../DiscordMiddleware/Permissions.html">Permissions</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Prefix" data-name="discordmiddleware::prefix">
+      <a href="../DiscordMiddleware/Prefix.html">Prefix</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/RateLimiter" data-name="discordmiddleware::ratelimiter">
+      <a href="../DiscordMiddleware/RateLimiter.html">RateLimiter</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/RateLimiterKey" data-name="discordmiddleware::ratelimiterkey">
+      <a href="../DiscordMiddleware/RateLimiterKey.html">RateLimiterKey</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/z64/discordcr-middleware/DiscordMiddleware/Time" data-name="discordmiddleware::time">
+      <a href="../DiscordMiddleware/Time.html">Time</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Discord::Client
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Discord/Client.html">Discord::Client</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>The basic client class that is used to connect to Discord, send REST
+requests, or send or receive gateway messages. It is required for doing any
+sort of interaction with Discord.</p>
+
+<p>A new simple client that does nothing yet can be created like this:</p>
+
+<pre><code>client <span class="o">=</span> <span class="t">Discord</span><span class="t">::</span><span class="t">Client</span>.<span class="k">new</span>(token: <span class="s">&quot;Bot token&quot;</span>, client_id: <span class="n">123_u64</span>)</code></pre>
+
+<p>With this client, REST requests can now be sent. (See the <code>Discord::REST</code>
+module.) A gateway connection can also be started using the <code>#run</code> method.</p>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type">Discord::REST</li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/lib/discordcr/src/discordcr/client.cr#L25" target="_blank">
+        lib/discordcr/src/discordcr/client.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L5" target="_blank">
+        discordcr-middleware.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#on_channel_create%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_channel_create</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_channel_create%28%2Amiddleware%29-instance-method">Client#on_channel_create</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_channel_create%28%2Amiddleware%2C%26block%3AChannel%2CContext-%3E%29-instance-method" class="signature"><strong>#on_channel_create</strong>(*middleware, &block : Channel, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_channel_create%28%2Amiddleware%29-instance-method">Client#on_channel_create</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_channel_delete%28%2Amiddleware%2C%26block%3AChannel%2CContext-%3E%29-instance-method" class="signature"><strong>#on_channel_delete</strong>(*middleware, &block : Channel, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_channel_delete%28%2Amiddleware%2C%26block%3AChannel%2CContext-%3E%29-instance-method">Client#on_channel_delete</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_channel_delete%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_channel_delete</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_channel_delete%28%2Amiddleware%2C%26block%3AChannel%2CContext-%3E%29-instance-method">Client#on_channel_delete</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_channel_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_channel_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_channel_update%28%2Amiddleware%29-instance-method">Client#on_channel_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_channel_update%28%2Amiddleware%2C%26block%3AChannel%2CContext-%3E%29-instance-method" class="signature"><strong>#on_channel_update</strong>(*middleware, &block : Channel, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_channel_update%28%2Amiddleware%29-instance-method">Client#on_channel_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_dispatch%28%2Amiddleware%2C%26block%3A%3A%3ATuple%28String%2CIO%3A%3AMemory%29%2CContext-%3E%29-instance-method" class="signature"><strong>#on_dispatch</strong>(*middleware, &block : ::Tuple(String, IO::Memory), Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_dispatch%28%2Amiddleware%2C%26block%3A%3A%3ATuple%28String%2CIO%3A%3AMemory%29%2CContext-%3E%29-instance-method">Client#on_dispatch</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_dispatch%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_dispatch</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_dispatch%28%2Amiddleware%2C%26block%3A%3A%3ATuple%28String%2CIO%3A%3AMemory%29%2CContext-%3E%29-instance-method">Client#on_dispatch</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_ban_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildBanPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_ban_add</strong>(*middleware, &block : Gateway::GuildBanPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_ban_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildBanPayload%2CContext-%3E%29-instance-method">Client#on_guild_ban_add</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_ban_add%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_ban_add</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_ban_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildBanPayload%2CContext-%3E%29-instance-method">Client#on_guild_ban_add</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_ban_remove%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_ban_remove</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_ban_remove%28%2Amiddleware%29-instance-method">Client#on_guild_ban_remove</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_ban_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildBanPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_ban_remove</strong>(*middleware, &block : Gateway::GuildBanPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_ban_remove%28%2Amiddleware%29-instance-method">Client#on_guild_ban_remove</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_create%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildCreatePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_create</strong>(*middleware, &block : Gateway::GuildCreatePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_create%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildCreatePayload%2CContext-%3E%29-instance-method">Client#on_guild_create</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_create%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_create</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_create%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildCreatePayload%2CContext-%3E%29-instance-method">Client#on_guild_create</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildDeletePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_delete</strong>(*middleware, &block : Gateway::GuildDeletePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildDeletePayload%2CContext-%3E%29-instance-method">Client#on_guild_delete</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_delete%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_delete</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildDeletePayload%2CContext-%3E%29-instance-method">Client#on_guild_delete</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_emoji_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_emoji_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_emoji_update%28%2Amiddleware%29-instance-method">Client#on_guild_emoji_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_emoji_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildEmojiUpdatePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_emoji_update</strong>(*middleware, &block : Gateway::GuildEmojiUpdatePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_emoji_update%28%2Amiddleware%29-instance-method">Client#on_guild_emoji_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_integrations_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildIntegrationsUpdatePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_integrations_update</strong>(*middleware, &block : Gateway::GuildIntegrationsUpdatePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_integrations_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildIntegrationsUpdatePayload%2CContext-%3E%29-instance-method">Client#on_guild_integrations_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_integrations_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_integrations_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_integrations_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildIntegrationsUpdatePayload%2CContext-%3E%29-instance-method">Client#on_guild_integrations_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_member_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberAddPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_member_add</strong>(*middleware, &block : Gateway::GuildMemberAddPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberAddPayload%2CContext-%3E%29-instance-method">Client#on_guild_member_add</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_member_add%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_member_add</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberAddPayload%2CContext-%3E%29-instance-method">Client#on_guild_member_add</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_member_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberRemovePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_member_remove</strong>(*middleware, &block : Gateway::GuildMemberRemovePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberRemovePayload%2CContext-%3E%29-instance-method">Client#on_guild_member_remove</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_member_remove%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_member_remove</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberRemovePayload%2CContext-%3E%29-instance-method">Client#on_guild_member_remove</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_member_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberUpdatePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_member_update</strong>(*middleware, &block : Gateway::GuildMemberUpdatePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberUpdatePayload%2CContext-%3E%29-instance-method">Client#on_guild_member_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_member_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_member_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberUpdatePayload%2CContext-%3E%29-instance-method">Client#on_guild_member_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_members_chunk%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMembersChunkPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_members_chunk</strong>(*middleware, &block : Gateway::GuildMembersChunkPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_members_chunk%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMembersChunkPayload%2CContext-%3E%29-instance-method">Client#on_guild_members_chunk</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_members_chunk%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_members_chunk</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_members_chunk%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMembersChunkPayload%2CContext-%3E%29-instance-method">Client#on_guild_members_chunk</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_role_create%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_role_create</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_create%28%2Amiddleware%29-instance-method">Client#on_guild_role_create</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_role_create%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildRolePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_role_create</strong>(*middleware, &block : Gateway::GuildRolePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_create%28%2Amiddleware%29-instance-method">Client#on_guild_role_create</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_role_delete%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_role_delete</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_delete%28%2Amiddleware%29-instance-method">Client#on_guild_role_delete</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_role_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildRoleDeletePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_role_delete</strong>(*middleware, &block : Gateway::GuildRoleDeletePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_delete%28%2Amiddleware%29-instance-method">Client#on_guild_role_delete</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_role_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_role_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_update%28%2Amiddleware%29-instance-method">Client#on_guild_role_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_role_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildRolePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_role_update</strong>(*middleware, &block : Gateway::GuildRolePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_update%28%2Amiddleware%29-instance-method">Client#on_guild_role_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_guild_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_update%28%2Amiddleware%29-instance-method">Client#on_guild_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_guild_update%28%2Amiddleware%2C%26block%3AGuild%2CContext-%3E%29-instance-method" class="signature"><strong>#on_guild_update</strong>(*middleware, &block : Guild, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_guild_update%28%2Amiddleware%29-instance-method">Client#on_guild_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_create%28%2Amiddleware%2C%26block%3AMessage%2CContext-%3E%29-instance-method" class="signature"><strong>#on_message_create</strong>(*middleware, &block : Message, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_create%28%2Amiddleware%2C%26block%3AMessage%2CContext-%3E%29-instance-method">Client#on_message_create</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_create%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_message_create</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_create%28%2Amiddleware%2C%26block%3AMessage%2CContext-%3E%29-instance-method">Client#on_message_create</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeletePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_message_delete</strong>(*middleware, &block : Gateway::MessageDeletePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeletePayload%2CContext-%3E%29-instance-method">Client#on_message_delete</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_delete%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_message_delete</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeletePayload%2CContext-%3E%29-instance-method">Client#on_message_delete</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_delete_bulk%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeleteBulkPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_message_delete_bulk</strong>(*middleware, &block : Gateway::MessageDeleteBulkPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_delete_bulk%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeleteBulkPayload%2CContext-%3E%29-instance-method">Client#on_message_delete_bulk</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_delete_bulk%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_message_delete_bulk</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_delete_bulk%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeleteBulkPayload%2CContext-%3E%29-instance-method">Client#on_message_delete_bulk</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_reaction_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_message_reaction_add</strong>(*middleware, &block : Gateway::MessageReactionPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method">Client#on_message_reaction_add</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_reaction_add%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_message_reaction_add</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method">Client#on_message_reaction_add</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_reaction_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_message_reaction_remove</strong>(*middleware, &block : Gateway::MessageReactionPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method">Client#on_message_reaction_remove</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_reaction_remove%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_message_reaction_remove</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method">Client#on_message_reaction_remove</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_reaction_remove_all%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_message_reaction_remove_all</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_remove_all%28%2Amiddleware%29-instance-method">Client#on_message_reaction_remove_all</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_reaction_remove_all%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionRemoveAllPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_message_reaction_remove_all</strong>(*middleware, &block : Gateway::MessageReactionRemoveAllPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_remove_all%28%2Amiddleware%29-instance-method">Client#on_message_reaction_remove_all</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageUpdatePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_message_update</strong>(*middleware, &block : Gateway::MessageUpdatePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageUpdatePayload%2CContext-%3E%29-instance-method">Client#on_message_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_message_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_message_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_message_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageUpdatePayload%2CContext-%3E%29-instance-method">Client#on_message_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_presence_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_presence_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_presence_update%28%2Amiddleware%29-instance-method">Client#on_presence_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_presence_update%28%2Amiddleware%2C%26block%3AGateway%3A%3APresenceUpdatePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_presence_update</strong>(*middleware, &block : Gateway::PresenceUpdatePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_presence_update%28%2Amiddleware%29-instance-method">Client#on_presence_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_ready%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_ready</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_ready%28%2Amiddleware%29-instance-method">Client#on_ready</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_ready%28%2Amiddleware%2C%26block%3AGateway%3A%3AReadyPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_ready</strong>(*middleware, &block : Gateway::ReadyPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_ready%28%2Amiddleware%29-instance-method">Client#on_ready</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_resumed%28%2Amiddleware%2C%26block%3AGateway%3A%3AResumedPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_resumed</strong>(*middleware, &block : Gateway::ResumedPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_resumed%28%2Amiddleware%2C%26block%3AGateway%3A%3AResumedPayload%2CContext-%3E%29-instance-method">Client#on_resumed</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_resumed%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_resumed</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_resumed%28%2Amiddleware%2C%26block%3AGateway%3A%3AResumedPayload%2CContext-%3E%29-instance-method">Client#on_resumed</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_typing_start%28%2Amiddleware%2C%26block%3AGateway%3A%3ATypingStartPayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_typing_start</strong>(*middleware, &block : Gateway::TypingStartPayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_typing_start%28%2Amiddleware%2C%26block%3AGateway%3A%3ATypingStartPayload%2CContext-%3E%29-instance-method">Client#on_typing_start</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_typing_start%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_typing_start</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_typing_start%28%2Amiddleware%2C%26block%3AGateway%3A%3ATypingStartPayload%2CContext-%3E%29-instance-method">Client#on_typing_start</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_user_update%28%2Amiddleware%2C%26block%3AUser%2CContext-%3E%29-instance-method" class="signature"><strong>#on_user_update</strong>(*middleware, &block : User, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_user_update%28%2Amiddleware%2C%26block%3AUser%2CContext-%3E%29-instance-method">Client#on_user_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_user_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_user_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_user_update%28%2Amiddleware%2C%26block%3AUser%2CContext-%3E%29-instance-method">Client#on_user_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_voice_server_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AVoiceServerUpdatePayload%2CContext-%3E%29-instance-method" class="signature"><strong>#on_voice_server_update</strong>(*middleware, &block : Gateway::VoiceServerUpdatePayload, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_voice_server_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AVoiceServerUpdatePayload%2CContext-%3E%29-instance-method">Client#on_voice_server_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_voice_server_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_voice_server_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_voice_server_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AVoiceServerUpdatePayload%2CContext-%3E%29-instance-method">Client#on_voice_server_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_voice_state_update%28%2Amiddleware%2C%26block%3AVoiceState%2CContext-%3E%29-instance-method" class="signature"><strong>#on_voice_state_update</strong>(*middleware, &block : VoiceState, Context -> )</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_voice_state_update%28%2Amiddleware%2C%26block%3AVoiceState%2CContext-%3E%29-instance-method">Client#on_voice_state_update</a></code> handler with a middleware chain and trailing block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_voice_state_update%28%2Amiddleware%29-instance-method" class="signature"><strong>#on_voice_state_update</strong>(*middleware)</a>
+        
+          <div class="summary"><p>Creates a <code><a href="../Discord/Client.html#on_voice_state_update%28%2Amiddleware%2C%26block%3AVoiceState%2CContext-%3E%29-instance-method">Client#on_voice_state_update</a></code> handler with a middleware chain.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Macro Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#stack_event%28event_name%2Cklass%29-macro" class="signature"><strong>stack_event</strong>(event_name, klass)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="on_channel_create(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_channel_create</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_channel_create%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_channel_create%28%2Amiddleware%29-instance-method">Client#on_channel_create</a></code> handler with a middleware chain.
+Handles a <code>Channel</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_channel_create(*middleware,&amp;block:Channel,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_channel_create</strong>(*middleware, &block : Channel, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_channel_create%28%2Amiddleware%2C%26block%3AChannel%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_channel_create%28%2Amiddleware%29-instance-method">Client#on_channel_create</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Channel</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_channel_delete(*middleware,&amp;block:Channel,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_channel_delete</strong>(*middleware, &block : Channel, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_channel_delete%28%2Amiddleware%2C%26block%3AChannel%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_channel_delete%28%2Amiddleware%2C%26block%3AChannel%2CContext-%3E%29-instance-method">Client#on_channel_delete</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Channel</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_channel_delete(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_channel_delete</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_channel_delete%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_channel_delete%28%2Amiddleware%2C%26block%3AChannel%2CContext-%3E%29-instance-method">Client#on_channel_delete</a></code> handler with a middleware chain.
+Handles a <code>Channel</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_channel_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_channel_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_channel_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_channel_update%28%2Amiddleware%29-instance-method">Client#on_channel_update</a></code> handler with a middleware chain.
+Handles a <code>Channel</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_channel_update(*middleware,&amp;block:Channel,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_channel_update</strong>(*middleware, &block : Channel, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_channel_update%28%2Amiddleware%2C%26block%3AChannel%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_channel_update%28%2Amiddleware%29-instance-method">Client#on_channel_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Channel</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_dispatch(*middleware,&amp;block:::Tuple(String,IO::Memory),Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_dispatch</strong>(*middleware, &block : ::Tuple(String, IO::Memory), <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_dispatch%28%2Amiddleware%2C%26block%3A%3A%3ATuple%28String%2CIO%3A%3AMemory%29%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_dispatch%28%2Amiddleware%2C%26block%3A%3A%3ATuple%28String%2CIO%3A%3AMemory%29%2CContext-%3E%29-instance-method">Client#on_dispatch</a></code> handler with a middleware chain and
+trailing block. Handles a <code>{String, IO::Memory}</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_dispatch(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_dispatch</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_dispatch%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_dispatch%28%2Amiddleware%2C%26block%3A%3A%3ATuple%28String%2CIO%3A%3AMemory%29%2CContext-%3E%29-instance-method">Client#on_dispatch</a></code> handler with a middleware chain.
+Handles a <code>{String, IO::Memory}</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_ban_add(*middleware,&amp;block:Gateway::GuildBanPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_ban_add</strong>(*middleware, &block : Gateway::GuildBanPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_ban_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildBanPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_ban_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildBanPayload%2CContext-%3E%29-instance-method">Client#on_guild_ban_add</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildBanPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_ban_add(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_ban_add</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_ban_add%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_ban_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildBanPayload%2CContext-%3E%29-instance-method">Client#on_guild_ban_add</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildBanPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L50" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_ban_remove(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_ban_remove</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_ban_remove%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_ban_remove%28%2Amiddleware%29-instance-method">Client#on_guild_ban_remove</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildBanPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_ban_remove(*middleware,&amp;block:Gateway::GuildBanPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_ban_remove</strong>(*middleware, &block : Gateway::GuildBanPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_ban_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildBanPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_ban_remove%28%2Amiddleware%29-instance-method">Client#on_guild_ban_remove</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildBanPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L52" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_create(*middleware,&amp;block:Gateway::GuildCreatePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_create</strong>(*middleware, &block : Gateway::GuildCreatePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_create%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildCreatePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_create%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildCreatePayload%2CContext-%3E%29-instance-method">Client#on_guild_create</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildCreatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_create(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_create</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_create%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_create%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildCreatePayload%2CContext-%3E%29-instance-method">Client#on_guild_create</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildCreatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_delete(*middleware,&amp;block:Gateway::GuildDeletePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_delete</strong>(*middleware, &block : Gateway::GuildDeletePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildDeletePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildDeletePayload%2CContext-%3E%29-instance-method">Client#on_guild_delete</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildDeletePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_delete(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_delete</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_delete%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildDeletePayload%2CContext-%3E%29-instance-method">Client#on_guild_delete</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildDeletePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_emoji_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_emoji_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_emoji_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_emoji_update%28%2Amiddleware%29-instance-method">Client#on_guild_emoji_update</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildEmojiUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L54" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_emoji_update(*middleware,&amp;block:Gateway::GuildEmojiUpdatePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_emoji_update</strong>(*middleware, &block : Gateway::GuildEmojiUpdatePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_emoji_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildEmojiUpdatePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_emoji_update%28%2Amiddleware%29-instance-method">Client#on_guild_emoji_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildEmojiUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L54" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_integrations_update(*middleware,&amp;block:Gateway::GuildIntegrationsUpdatePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_integrations_update</strong>(*middleware, &block : Gateway::GuildIntegrationsUpdatePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_integrations_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildIntegrationsUpdatePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_integrations_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildIntegrationsUpdatePayload%2CContext-%3E%29-instance-method">Client#on_guild_integrations_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildIntegrationsUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_integrations_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_integrations_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_integrations_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_integrations_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildIntegrationsUpdatePayload%2CContext-%3E%29-instance-method">Client#on_guild_integrations_update</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildIntegrationsUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_member_add(*middleware,&amp;block:Gateway::GuildMemberAddPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_member_add</strong>(*middleware, &block : Gateway::GuildMemberAddPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_member_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberAddPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberAddPayload%2CContext-%3E%29-instance-method">Client#on_guild_member_add</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildMemberAddPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_member_add(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_member_add</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_member_add%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberAddPayload%2CContext-%3E%29-instance-method">Client#on_guild_member_add</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildMemberAddPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L58" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_member_remove(*middleware,&amp;block:Gateway::GuildMemberRemovePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_member_remove</strong>(*middleware, &block : Gateway::GuildMemberRemovePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_member_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberRemovePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberRemovePayload%2CContext-%3E%29-instance-method">Client#on_guild_member_remove</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildMemberRemovePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L62" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_member_remove(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_member_remove</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_member_remove%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberRemovePayload%2CContext-%3E%29-instance-method">Client#on_guild_member_remove</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildMemberRemovePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L62" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_member_update(*middleware,&amp;block:Gateway::GuildMemberUpdatePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_member_update</strong>(*middleware, &block : Gateway::GuildMemberUpdatePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_member_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberUpdatePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberUpdatePayload%2CContext-%3E%29-instance-method">Client#on_guild_member_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildMemberUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_member_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_member_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_member_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_member_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMemberUpdatePayload%2CContext-%3E%29-instance-method">Client#on_guild_member_update</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildMemberUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_members_chunk(*middleware,&amp;block:Gateway::GuildMembersChunkPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_members_chunk</strong>(*middleware, &block : Gateway::GuildMembersChunkPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_members_chunk%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMembersChunkPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_members_chunk%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMembersChunkPayload%2CContext-%3E%29-instance-method">Client#on_guild_members_chunk</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildMembersChunkPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_members_chunk(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_members_chunk</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_members_chunk%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_members_chunk%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildMembersChunkPayload%2CContext-%3E%29-instance-method">Client#on_guild_members_chunk</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildMembersChunkPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_role_create(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_role_create</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_role_create%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_create%28%2Amiddleware%29-instance-method">Client#on_guild_role_create</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildRolePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L66" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_role_create(*middleware,&amp;block:Gateway::GuildRolePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_role_create</strong>(*middleware, &block : Gateway::GuildRolePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_role_create%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildRolePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_create%28%2Amiddleware%29-instance-method">Client#on_guild_role_create</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildRolePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L66" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_role_delete(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_role_delete</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_role_delete%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_delete%28%2Amiddleware%29-instance-method">Client#on_guild_role_delete</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildRoleDeletePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_role_delete(*middleware,&amp;block:Gateway::GuildRoleDeletePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_role_delete</strong>(*middleware, &block : Gateway::GuildRoleDeletePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_role_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildRoleDeletePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_delete%28%2Amiddleware%29-instance-method">Client#on_guild_role_delete</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildRoleDeletePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_role_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_role_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_role_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_update%28%2Amiddleware%29-instance-method">Client#on_guild_role_update</a></code> handler with a middleware chain.
+Handles a <code>Gateway::GuildRolePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_role_update(*middleware,&amp;block:Gateway::GuildRolePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_role_update</strong>(*middleware, &block : Gateway::GuildRolePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_role_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AGuildRolePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_role_update%28%2Amiddleware%29-instance-method">Client#on_guild_role_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::GuildRolePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L68" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_guild_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_update%28%2Amiddleware%29-instance-method">Client#on_guild_update</a></code> handler with a middleware chain.
+Handles a <code>Guild</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L46" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_guild_update(*middleware,&amp;block:Guild,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_guild_update</strong>(*middleware, &block : Guild, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_guild_update%28%2Amiddleware%2C%26block%3AGuild%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_guild_update%28%2Amiddleware%29-instance-method">Client#on_guild_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Guild</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L46" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_create(*middleware,&amp;block:Message,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_create</strong>(*middleware, &block : Message, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_message_create%28%2Amiddleware%2C%26block%3AMessage%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_create%28%2Amiddleware%2C%26block%3AMessage%2CContext-%3E%29-instance-method">Client#on_message_create</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Message</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L72" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_create(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_create</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_message_create%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_create%28%2Amiddleware%2C%26block%3AMessage%2CContext-%3E%29-instance-method">Client#on_message_create</a></code> handler with a middleware chain.
+Handles a <code>Message</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L72" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_delete(*middleware,&amp;block:Gateway::MessageDeletePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_delete</strong>(*middleware, &block : Gateway::MessageDeletePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_message_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeletePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeletePayload%2CContext-%3E%29-instance-method">Client#on_message_delete</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::MessageDeletePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L82" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_delete(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_delete</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_message_delete%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_delete%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeletePayload%2CContext-%3E%29-instance-method">Client#on_message_delete</a></code> handler with a middleware chain.
+Handles a <code>Gateway::MessageDeletePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L82" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_delete_bulk(*middleware,&amp;block:Gateway::MessageDeleteBulkPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_delete_bulk</strong>(*middleware, &block : Gateway::MessageDeleteBulkPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_message_delete_bulk%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeleteBulkPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_delete_bulk%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeleteBulkPayload%2CContext-%3E%29-instance-method">Client#on_message_delete_bulk</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::MessageDeleteBulkPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L84" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_delete_bulk(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_delete_bulk</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_message_delete_bulk%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_delete_bulk%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageDeleteBulkPayload%2CContext-%3E%29-instance-method">Client#on_message_delete_bulk</a></code> handler with a middleware chain.
+Handles a <code>Gateway::MessageDeleteBulkPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L84" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_reaction_add(*middleware,&amp;block:Gateway::MessageReactionPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_reaction_add</strong>(*middleware, &block : Gateway::MessageReactionPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_message_reaction_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method">Client#on_message_reaction_add</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::MessageReactionPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_reaction_add(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_reaction_add</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_message_reaction_add%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_add%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method">Client#on_message_reaction_add</a></code> handler with a middleware chain.
+Handles a <code>Gateway::MessageReactionPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_reaction_remove(*middleware,&amp;block:Gateway::MessageReactionPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_reaction_remove</strong>(*middleware, &block : Gateway::MessageReactionPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_message_reaction_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method">Client#on_message_reaction_remove</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::MessageReactionPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L76" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_reaction_remove(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_reaction_remove</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_message_reaction_remove%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_remove%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionPayload%2CContext-%3E%29-instance-method">Client#on_message_reaction_remove</a></code> handler with a middleware chain.
+Handles a <code>Gateway::MessageReactionPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L76" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_reaction_remove_all(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_reaction_remove_all</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_message_reaction_remove_all%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_remove_all%28%2Amiddleware%29-instance-method">Client#on_message_reaction_remove_all</a></code> handler with a middleware chain.
+Handles a <code>Gateway::MessageReactionRemoveAllPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L78" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_reaction_remove_all(*middleware,&amp;block:Gateway::MessageReactionRemoveAllPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_reaction_remove_all</strong>(*middleware, &block : Gateway::MessageReactionRemoveAllPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_message_reaction_remove_all%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageReactionRemoveAllPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_reaction_remove_all%28%2Amiddleware%29-instance-method">Client#on_message_reaction_remove_all</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::MessageReactionRemoveAllPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L78" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_update(*middleware,&amp;block:Gateway::MessageUpdatePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_update</strong>(*middleware, &block : Gateway::MessageUpdatePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_message_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageUpdatePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageUpdatePayload%2CContext-%3E%29-instance-method">Client#on_message_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::MessageUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L80" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_message_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_message_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_message_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_message_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AMessageUpdatePayload%2CContext-%3E%29-instance-method">Client#on_message_update</a></code> handler with a middleware chain.
+Handles a <code>Gateway::MessageUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L80" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_presence_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_presence_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_presence_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_presence_update%28%2Amiddleware%29-instance-method">Client#on_presence_update</a></code> handler with a middleware chain.
+Handles a <code>Gateway::PresenceUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L86" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_presence_update(*middleware,&amp;block:Gateway::PresenceUpdatePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_presence_update</strong>(*middleware, &block : Gateway::PresenceUpdatePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_presence_update%28%2Amiddleware%2C%26block%3AGateway%3A%3APresenceUpdatePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_presence_update%28%2Amiddleware%29-instance-method">Client#on_presence_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::PresenceUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L86" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_ready(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_ready</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_ready%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_ready%28%2Amiddleware%29-instance-method">Client#on_ready</a></code> handler with a middleware chain.
+Handles a <code>Gateway::ReadyPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_ready(*middleware,&amp;block:Gateway::ReadyPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_ready</strong>(*middleware, &block : Gateway::ReadyPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_ready%28%2Amiddleware%2C%26block%3AGateway%3A%3AReadyPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_ready%28%2Amiddleware%29-instance-method">Client#on_ready</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::ReadyPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_resumed(*middleware,&amp;block:Gateway::ResumedPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_resumed</strong>(*middleware, &block : Gateway::ResumedPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_resumed%28%2Amiddleware%2C%26block%3AGateway%3A%3AResumedPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_resumed%28%2Amiddleware%2C%26block%3AGateway%3A%3AResumedPayload%2CContext-%3E%29-instance-method">Client#on_resumed</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::ResumedPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_resumed(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_resumed</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_resumed%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_resumed%28%2Amiddleware%2C%26block%3AGateway%3A%3AResumedPayload%2CContext-%3E%29-instance-method">Client#on_resumed</a></code> handler with a middleware chain.
+Handles a <code>Gateway::ResumedPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L36" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_typing_start(*middleware,&amp;block:Gateway::TypingStartPayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_typing_start</strong>(*middleware, &block : Gateway::TypingStartPayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_typing_start%28%2Amiddleware%2C%26block%3AGateway%3A%3ATypingStartPayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_typing_start%28%2Amiddleware%2C%26block%3AGateway%3A%3ATypingStartPayload%2CContext-%3E%29-instance-method">Client#on_typing_start</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::TypingStartPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L88" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_typing_start(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_typing_start</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_typing_start%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_typing_start%28%2Amiddleware%2C%26block%3AGateway%3A%3ATypingStartPayload%2CContext-%3E%29-instance-method">Client#on_typing_start</a></code> handler with a middleware chain.
+Handles a <code>Gateway::TypingStartPayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L88" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_user_update(*middleware,&amp;block:User,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_user_update</strong>(*middleware, &block : User, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_user_update%28%2Amiddleware%2C%26block%3AUser%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_user_update%28%2Amiddleware%2C%26block%3AUser%2CContext-%3E%29-instance-method">Client#on_user_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>User</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L90" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_user_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_user_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_user_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_user_update%28%2Amiddleware%2C%26block%3AUser%2CContext-%3E%29-instance-method">Client#on_user_update</a></code> handler with a middleware chain.
+Handles a <code>User</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L90" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_voice_server_update(*middleware,&amp;block:Gateway::VoiceServerUpdatePayload,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_voice_server_update</strong>(*middleware, &block : Gateway::VoiceServerUpdatePayload, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_voice_server_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AVoiceServerUpdatePayload%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_voice_server_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AVoiceServerUpdatePayload%2CContext-%3E%29-instance-method">Client#on_voice_server_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>Gateway::VoiceServerUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L94" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_voice_server_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_voice_server_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_voice_server_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_voice_server_update%28%2Amiddleware%2C%26block%3AGateway%3A%3AVoiceServerUpdatePayload%2CContext-%3E%29-instance-method">Client#on_voice_server_update</a></code> handler with a middleware chain.
+Handles a <code>Gateway::VoiceServerUpdatePayload</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L94" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_voice_state_update(*middleware,&amp;block:VoiceState,Context-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_voice_state_update</strong>(*middleware, &block : VoiceState, <a href="../Discord/Context.html">Context</a> -> )
+
+        <a class="method-permalink" href="#on_voice_state_update%28%2Amiddleware%2C%26block%3AVoiceState%2CContext-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_voice_state_update%28%2Amiddleware%2C%26block%3AVoiceState%2CContext-%3E%29-instance-method">Client#on_voice_state_update</a></code> handler with a middleware chain and
+trailing block. Handles a <code>VoiceState</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L92" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_voice_state_update(*middleware)-instance-method">
+      <div class="signature">
+        
+        def <strong>on_voice_state_update</strong>(*middleware)
+
+        <a class="method-permalink" href="#on_voice_state_update%28%2Amiddleware%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Creates a <code><a href="../Discord/Client.html#on_voice_state_update%28%2Amiddleware%2C%26block%3AVoiceState%2CContext-%3E%29-instance-method">Client#on_voice_state_update</a></code> handler with a middleware chain.
+Handles a <code>VoiceState</code> payload.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L92" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>Macro Detail</h2>
+  
+    <div class="entry-detail" id="stack_event(event_name,klass)-macro">
+      <div class="signature">
+        
+        macro <strong>stack_event</strong>(event_name, klass)
+
+        <a class="method-permalink" href="#stack_event%28event_name%2Cklass%29-macro">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/z64/discordcr-middleware/blob/5c0b2ba082839aef76b6f452eacb30a54bdd2675/src/discordcr-middleware.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>

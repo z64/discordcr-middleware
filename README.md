@@ -7,6 +7,15 @@ and make great reuse of code and state between events.
 
 - [Documentation](https://z64.github.io/discordcr-middleware)
 
+## Deprecation notice
+
+The functionality provided by this shard is now built into discordcr. It
+**should not** be used, as it would duplicate a bunch of code.
+
+Eventually this repo will be reorganized to host *only* the stock middleware.
+If you still want to use them, you can just specifically require them instead
+of requiring the entire extension.
+
 ## Installation
 
 Add this to your application's `shard.yml`:
